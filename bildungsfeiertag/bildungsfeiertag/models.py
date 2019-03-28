@@ -1,7 +1,7 @@
 import docupy
 from datetime import datetime
 from django.db import models
-import bildungsfeiertag.settings as settings
+from django.contrib.auth.models import User
 
 
 class Site(models.Model):
@@ -10,7 +10,8 @@ class Site(models.Model):
     image = models.CharField(max_length=128)
 
     def __str__(self):
-        return "{}".format(name)
+        return "{}".format(self.name)
+
 
 class Room(models.Model):
     site = models.ForeignKey('Site',
@@ -28,7 +29,7 @@ class Talk(models.Model):
     description = models.TextField()
     room = models.ForeignKey('Room',
                              on_delete=models.CASCADE)
-    speaker = models.ForeignKey(settings.AUTH_USER_MODEL,
+    speaker = models.ForeignKey(User,
                                 on_delete=models.CASCADE)
     duration = models.DurationField()
     time = models.TimeField()
@@ -45,7 +46,7 @@ class Vote(models.Model):
         on_delete=models.CASCADE,
     )
     user = models.OneToOneField(
-        settings.AUTH_USER_MODEL,
+        User,
         on_delete=models.CASCADE,
     )
 

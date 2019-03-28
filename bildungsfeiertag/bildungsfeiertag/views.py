@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.db import IntegrityError
-from models import Site, Room, Talk, Vote, MediaFile
+from .models import Site, Room, Talk, Vote, MediaFile
 
 
 def index(request):

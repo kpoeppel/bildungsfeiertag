@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
-import bildungsfeiertag.views as views
+from . import views
 
 
 urlpatterns = [

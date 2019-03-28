@@ -1,8 +1,7 @@
 from django.contrib import admin
-from django.db import models
-from .models import *
+from . import models
 
-admin.site.register(Site)
-admin.site.register(Room)
-admin.site.register(Talk)
-admin.site.register(Vote)
+admin.site.register(models.Site)
+admin.site.register(models.Room)
+admin.site.register(models.Talk)
+admin.site.register(models.Vote)

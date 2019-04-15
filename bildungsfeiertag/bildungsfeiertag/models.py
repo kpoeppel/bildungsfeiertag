@@ -1,10 +1,19 @@
 import docupy
 from datetime import datetime
 from django.db import models
-from django.contrib.auth.models import User
+import django.contrib.auth.models
 from djmoney.models.fields import MoneyField
 from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 
+EVENT_DURATIONS = (('30', "kurz (15 + 10 min)"),
+                   ('60', "lang (35 + 15 min)"),
+                   ('90', "sehr lang (65 + 20 min)"))
+
+EVENT_DEFAULT_DURATION = EVENT_DURATIONS[0]
+
+
+User = django.contrib.auth.models.User
 
 class Site(models.Model):
     name = models.CharField(max_length=100)
@@ -38,7 +47,7 @@ class Event(models.Model):
                    (WORKSHOP, 'Workshop'),
                    (EXCURSION, 'Exkusion'),
                    (DISCUSSION, 'Diskussion'))
-    submit_date = models.DateField()
+    submit_date = models.DateTimeField()
     title = models.TextField()
     # date = models.DateField()
     description = models.TextField()
@@ -46,10 +55,14 @@ class Event(models.Model):
                              on_delete=models.CASCADE)
     speaker = models.ForeignKey(User,
                                 on_delete=models.CASCADE)
-    duration = models.DurationField()
+    duration = models.CharField(max_length=128,
+                                choices=EVENT_DURATIONS,
+                                default=EVENT_DEFAULT_DURATION)
     active = models.BooleanField()
     accepted = models.BooleanField()
-    max_participants = models.PositiveIntegerField()
+    max_participants = models.IntegerField(validators=[MinValueValidator(5),
+                                                       MaxValueValidator(1000)],
+                                           default=1000)
     # image = models.CharField(max_length=128)
     type = models.CharField(max_length=128,
                             choices=EVENT_TYPES,

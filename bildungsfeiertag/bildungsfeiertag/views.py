@@ -3,25 +3,28 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.db import IntegrityError
-from .models import Site, Room, Event, Vote, MediaFile
+from .models import Site, Room, Event, Vote, MediaFile, User
+from .models import EVENT_DEFAULT_DURATION
 from django_registration.forms import RegistrationForm
 from .forms import ProfileForm, EventForm
+import datetime
+from django.contrib import messages
 
-def index(request):
+def index_view(request):
     sites = Site.objects.all()
     return render(request, "index.html", {"sites": sites})
 
 
-def about(request):
+def about_view(request):
     return render(request, "about.html", {"description": "This is a preliminary description text."})
 
 
-def overview(request):
+def overview_view(request):
     sites = Site.objects.all()
     return render(request, "overview.html", {"sites": sites})
 
 
-def site(request, site_name):
+def site_view(request, site_name):
     site = get_object_or_404(Site, name=site_name)
     user = request.user
     if site.roomsdistributed:
@@ -31,21 +34,39 @@ def site(request, site_name):
                                              "rooms_events": list(zip(rooms, sched_events)),
                                              "user": user})
     else:
-        events = Event.objects.filter(site=site).order_by("submit_date")
+        events = Event.objects.filter(site=site, active=True).order_by("submit_date")
         return render(request, "site.html", {"site": site,
                                              "events": events,
                                              "user": user})
 
 
-def event(request, site_name, event_title):
+def event_view(request, site_name, event_title):
     site = get_object_or_404(Site, name=site_name)
     events = get_list_or_404(Event, title=event_title)
     event = [event for event in events if event.site == site]
     user = request.user
-    return render(request, "event.html", {"event": event, "site": site, "user": user})
+    if event:
+        event = event[0]
+        if request.method == 'POST':
+            vote = Vote.objects.filter(user=user, event=event)
+            if vote:
+                vote[0].delete()
+                messages.add_message(request,
+                                     messages.SUCCESS,
+                                     'You unvoted for '+event.title+".")
+            else:
+                vote = Vote(user=user, event=event)
+                vote.save()
+                messages.add_message(request,
+                                     messages.SUCCESS,
+                                     'You voted for '+event.title+".")
+        votes = len(Vote.objects.filter(event=event))
+        vote = Vote.objects.filter(user=user, event=event)
+        return render(request, "event.html", {"event": event, "site": site, "user": user, "votes": votes, "vote": vote})
+    else:
+        raise Http404("Event does not exist.")
 
-
-def room(request, site_name, room_name):
+def room_view(request, site_name, room_name):
     site = get_object_or_404(Site, name=site_name)
     rooms = get_list_or_404(Room, name=room_name)
     room = [room for room in rooms if room.site == site]
@@ -60,7 +81,7 @@ def room(request, site_name, room_name):
     else:
         raise Http404("Room does not exist.")
 
-def media(request):
+def media_view(request):
     if request.method == "POST":
         if "delete" in request.POST:
             media = MediaFile.objects.get(name=request.POST["name"])
@@ -84,6 +105,124 @@ def media(request):
 })
 
 
+def event_create_view(request, site_name):
+    site = get_object_or_404(Site, name=site_name)
+    if request.user.is_authenticated:
+        user = get_object_or_404(User, username=request.user.username)
+        if request.method == 'POST':
+            # create a form instance and populate it with data from the request:
+            form = EventForm(data=request.POST)
+            # check whether it's valid:
+            if form.is_valid():
+                event = form.save(commit=False)
+                event.submit_date = datetime.datetime.now()
+                event.speaker = user
+                event.site = site
+                event.accepted = False
+                otherevents = Event.objects.filter(title=event.title, site=site)
+                if not otherevents:
+                    event.save()
+                else:
+                    messages.add_message(request,
+                                         messages.ERROR,
+                                         'Title already exists.')
+                    return HttpResponseRedirect('')
+                # process the data in form.cleaned_data as required
+                # ...
+                # redirect to a new URL:
+                messages.add_message(request,
+                                     messages.SUCCESS,
+                                     'Changes successfully saved.')
+                return HttpResponseRedirect('event_change/'+event.title)
+            else:
+                messages.add_message(request,
+                                     messages.ERROR,
+                                     'Form was badly filled.')
+                return HttpResponseRedirect('')
+        else:
+            form = EventForm(initial={'title': "",
+                                      'description': "",
+                                      'type': Event.TALK,
+                                      'duration': EVENT_DEFAULT_DURATION})
+            return render(request, "event-create.html", {"form": form,
+                                                         "site": site,
+                                                         "user": request.user,
+                                                         "create": True})
+    else:
+        return render(request, "event-create.html", {"site": site,
+                                                     "user": request.user,
+                                                     "create": True})
+
+def event_delete_view(request, site_name, event_title):
+    site = get_object_or_404(Site, name=site_name)
+    events = get_list_or_404(Event, title=event_title)
+    event = [event for event in events if event.site == site]
+    user = request.user
+
+    if event and user:
+        event = event[0]
+        if event.speaker == user:
+            event.delete()
+            messages.add_message(request,
+                                 messages.SUCCESS,
+                                 'Your event was deleted.')
+        else:
+            messages.add_message(request,
+                                 messages.ERROR,
+                                 'Your must not delete others events.')
+    return render(request, "event-delete.html", {"site": site, "user": user})
+
+
+def event_change_view(request, site_name, event_title):
+    site = get_object_or_404(Site, name=site_name)
+    events = get_list_or_404(Event, title=event_title)
+    event = [event for event in events if event.site == site]
+    user = request.user
+
+    if event:
+        event = event[0]
+        if request.method == 'POST':
+            # create a form instance and populate it with data from the request:
+            form = EventForm(request.POST)
+            # check whether it's valid:
+            print("NO", form.errors)
+            if form.is_valid():
+                print("Yes")
+                data = form.cleaned_data
+                newevent = form.save(commit=False)
+                otherevents = Event.objects.filter(title=newevent.title, site=site)
+                if not otherevents or otherevents[0].title == event.title:
+                    newevent.save()
+                    event.delete()
+                    messages.add_message(request,
+                                         messages.SUCCESS,
+                                         'Changes successfully saved.')
+                else:
+                    messages.add_message(request,
+                                         messages.ERROR,
+                                         'Title already exists.')
+                    return HttpResponseRedirect('')
+                # process the data in form.cleaned_data as required
+                # ...
+                # redirect to a new URL:
+                return HttpResponseRedirect('event_change/'+event.title)
+            messages.add_message(request,
+                                 messages.ERROR,
+                                 'Form was badly filled.')
+            return HttpResponseRedirect('')
+        # if a GET (or any other method) we'll create a blank form
+        else:
+            print("HI")
+            form = EventForm(instance=event)
+            print("BYE", form)
+        return render(request, "event-create.html", {"event": event,
+                                                     "form": form,
+                                                     "site": site,
+                                                     "user": user,
+                                                     "create": False})
+    else:
+        raise Http404("Room does not exist.")
+
 def register(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -95,7 +234,7 @@ def register(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            return HttpResponseRedirect('accounts/register/complete')
+            return HttpResponseRedirect('complete')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -105,21 +244,49 @@ def register(request):
                   {'form': form})
 
 
-def profile(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = ProfileForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('accounts/profile')
 
-    # if a GET (or any other method) we'll create a blank form
+def profile_view(request):
+    user = request.user
+    # if this is a POST request we need to process the form data
+    if user.is_authenticated:
+        if request.method == 'POST':
+            # create a form instance and populate it with data from the request:
+            form = ProfileForm(data=request.POST)
+            # check whether it's valid:
+
+            if form.is_valid():
+                # process the data in form.cleaned_data as required
+                # ...
+                # redirect to a new URL:
+                newuser = form.save(commit=False)
+                otherusers = User.objects.filter(username=newuser.name)
+                if not otherusers or newuser.username == user.username:
+                    user.username = newuser.username
+                    user.first_name = newuser.first_name
+                    user.last_name = newuser.last_name
+                    user.email = newuser.email
+                    user.save()
+                    messages.add_message(request,
+                                         messages.SUCCESS,
+                                         'Changes successfully saved.')
+                else:
+                    messages.add_message(request,
+                                         messages.ERROR,
+                                         'Username exists.')
+            return HttpResponseRedirect('')
+
+        # if a GET (or any other method) we'll create a blank form
+        else:
+            events = Event.objects.filter(speaker=user)
+            form = ProfileForm(instance=request.user)
+            sites = [event.site for event in events]
+            sites_events = list(zip(sites, events))
+            return render(request,
+                          'profile.html',
+                          {'form': form,
+                           'sites_events': sites_events,
+                           'user': request.user})
     else:
-        form = ProfileForm()
-    return render(request,
-                  'profile.html',
-                  {'form': form})
+        return render(request,
+                      'profile.html',
+                      {'user': user})

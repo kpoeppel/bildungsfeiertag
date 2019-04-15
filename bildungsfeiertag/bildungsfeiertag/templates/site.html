@@ -33,13 +33,18 @@
   {% else %}
   {% if events %}
   {% for event in events %}
-      <div class="index-cell" id="room">
+      <div class="index-cell" id="event">
           {% include "event-overview.html" %}
       </div>
   {% endfor %}
   {% else %}
       <p>Leider gibt noch keine Events an diesem Veranstaltungsort.</p>
   {% endif %}
+  <a href="/site/{{site.name}}/event_create">
+  <div class="index-cell" id="event">
+    Erstelle einen neuen Event.
+  </div>
+  </a>
 {% endif %}
 {% endif %}
 </div>

@@ -26,6 +26,13 @@
     <div id='leftmenuinnerinner' class=''>
       <a target='_top' href="/">Veranstaltungsorte</a>
       <a target='_top' href="/about">Ueber uns</a>
+      {% if user.is_authenticated %}
+      <a target='_top' href="/accounts/profile">Meine Vortraege</a>
+      <a target='_top' href="/accounts/logout">Logout</a>
+      {% else %}
+      <a target='_top' href="/accounts/login">Login</a>
+      <a target='_top' href="/accounts/register">Register</a>
+      {% endif %}
     </div>
     </div>
     <main>

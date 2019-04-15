@@ -90,6 +90,7 @@ DATABASES = {
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -114,8 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'de-de'
 
-TIME_ZONE = 'Europe/Berlin'
-
 USE_I18N = True
 
 USE_L10N = True
@@ -126,6 +125,9 @@ CURRENCIES = ('EUR')
 CURRENCY_CHOICES = [('EUR', '€')]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 STATIC_URL = '/static/'
 

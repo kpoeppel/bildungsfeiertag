@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Bildungsfeiertag{% endblock %}
+
+{% block main %}
+
+<div class="home-summary">
+    {{ text.html|safe }}
+</div>
+
+<div class="index-grid">
+    <div class="index-cell" id="sites">
+        <h2>Veranstaltungsorte</h2>
+        {% if sites %}
+          {% for site in sites %}
+            {% include "site-overview.html" %}
+          {% endfor %}
+        {% else %}
+            <p>Leider gibt es noch keine Bildungsfeiertag-Veranstaltungsorte.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

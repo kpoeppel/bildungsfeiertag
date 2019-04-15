@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "sass_processor",
     'material'
 ]
 
@@ -70,6 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bildungsfeiertag.wsgi.application'
 
+SASS_PROCESSOR_ROOT = os.path.abspath(os.path.join(BASE_DIR, "bildungsfeiertag", "static"))
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases

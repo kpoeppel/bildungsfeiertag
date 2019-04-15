@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Bildungsfeiertag{% endblock %}
+
+{% block main %}
+
+<div class="index-grid">
+  {% if room %}
+  <h2>{{room}}</h2>
+  <h3>Vortraege</h3>
+        {% if talks %}
+        {% for talk in talks %}
+            <div class="index-cell" id="talk">
+            {% include "talk-overview.html" %}
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>Leider gibt es noch keine Angebote zu diesem Raum.</p>
+        {% endif %}
+{% endif %}
+</div>
+{% endblock %}

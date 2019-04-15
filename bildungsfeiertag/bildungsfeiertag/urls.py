@@ -23,5 +23,9 @@ from . import views
 
 urlpatterns = [
     path(r"admin/", admin.site.urls),
-    path(r"", views.index)
+    path(r"", views.index),
+    path(r"about", views.about),
+    path(r"site/<str:site_name>", views.site),
+    path(r"site/<str:site_name>/talk/<str:talk_name>", views.talk),
+    path(r"site/<str:site_name>/room/<str:room_name>", views.room),
 ]

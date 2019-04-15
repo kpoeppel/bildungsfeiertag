@@ -27,17 +27,20 @@ class Talk(models.Model):
     title = models.TextField()
     date = models.DateField()
     description = models.TextField()
+    site = models.ForeignKey('Site',
+                             on_delete=models.CASCADE)
     room = models.ForeignKey('Room',
                              on_delete=models.CASCADE)
     speaker = models.ForeignKey(User,
                                 on_delete=models.CASCADE)
     duration = models.DurationField()
     time = models.TimeField()
+    active = models.BooleanField()
     accepted = models.BooleanField()
     image = models.CharField(max_length=128)
 
     def __str__(self):
-        return "\"{}\" by {}".format(self.title, self.speaker.name)
+        return "\"{}\" by {}".format(self.title, str(self.speaker))
 
 
 class Vote(models.Model):

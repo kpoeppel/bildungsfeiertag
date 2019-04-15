@@ -1,0 +1,35 @@
+
+{% extends "base.html" %}
+
+{% block title %}Bildungsfeiertag{% endblock %}
+
+{% block main %}
+
+
+<div class="index-grid">
+  {% if site %}
+  <h2>{{site}}</h2>
+  <h3>Vortraege</h3>
+        {% if talks %}
+        {% for talk in talks %}
+            <div class="index-cell" id="talk">
+            {% include "talk-overview.html" %}
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>Leider gibt es noch keine Angebote zu diesem Veranstaltungsort.</p>
+        {% endif %}
+
+  <h3>Raeume</h3>
+        {% if rooms %}
+        {% for room in rooms %}
+            <div class="index-cell" id="room">
+            {% include "room-overview.html" %}
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>Leider gibt keine Raeume an diesem Veranstaltungsort.</p>
+        {% endif %}
+  {% endif %}
+</div>
+{% endblock %}

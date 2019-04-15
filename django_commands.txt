@@ -12,8 +12,7 @@ python manage.py createsuperuser		# create a superuser with a certain admin name
 http://127.0.0.1:8000/admin/			# view the admin site
 mysite/appname/views.py				# create different views of your system
 mysite/appname/urls.py				# connect a view to a url
-
-
+python manage.py migrate --run-syncdb   # also change db structure for migration
 
 Code Snippets:
 

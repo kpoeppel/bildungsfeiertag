@@ -3,6 +3,7 @@ from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from djmoney.models.fields import MoneyField
+from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
 
 
 class Site(models.Model):
@@ -37,30 +38,42 @@ class Event(models.Model):
                    (WORKSHOP, 'Workshop'),
                    (EXCURSION, 'Exkusion'),
                    (DISCUSSION, 'Diskussion'))
+    submit_date = models.DateField()
     title = models.TextField()
-    date = models.DateField()
+    # date = models.DateField()
     description = models.TextField()
-    room = models.ForeignKey('Room',
-                             on_delete=models.CASCADE)
     site = models.ForeignKey('Site',
                              on_delete=models.CASCADE)
     speaker = models.ForeignKey(User,
                                 on_delete=models.CASCADE)
     duration = models.DurationField()
-    time = models.TimeField()
     active = models.BooleanField()
     accepted = models.BooleanField()
-    scheduled = models.BooleanField()
     max_participants = models.PositiveIntegerField()
     # image = models.CharField(max_length=128)
     type = models.CharField(max_length=128,
                             choices=EVENT_TYPES,
                             default=TALK)
-    expenses = MoneyField(max_digits=4, decimal_places=2, default_currency='USD')
+    expenses = MoneyField(max_digits=4,
+                          decimal_places=2,
+                          default_currency='EUR',
+                          default=0,
+                          validators=[
+                            MinMoneyValidator(0),
+                            MaxMoneyValidator(20)])
 
+
+class ScheduledEvent(models.Model):
+    room = models.ForeignKey('Room',
+                             on_delete=models.CASCADE)
+    time = models.TimeField()
+    event = models.OneToOneField(
+        Event,
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
-        return "\"{}\" by {}".format(self.title, str(self.speaker))
+        return "\"{}\" by {}".format(self.event.title, str(self.event.speaker))
 
 
 class Vote(models.Model):
@@ -75,7 +88,7 @@ class Vote(models.Model):
 
 class Interest(models.Model):
     event = models.OneToOneField(
-        Event,
+        ScheduledEvent,
         on_delete=models.CASCADE,
     )
     user = models.OneToOneField(
@@ -85,7 +98,7 @@ class Interest(models.Model):
 
 class Registration(models.Model):
     event = models.OneToOneField(
-        Event,
+        ScheduledEvent,
         on_delete=models.CASCADE,
     )
     user = models.OneToOneField(

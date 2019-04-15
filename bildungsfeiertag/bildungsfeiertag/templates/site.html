@@ -7,7 +7,7 @@
 
 
 <div class="index-grid">
-  {% if site %}
+{% if site %}
   <h2>{{site.name}}</h2>
 
   {% if site.roomsdistributed %}
@@ -30,7 +30,17 @@
         {% else %}
             <p>Leider gibt keine Raeume an diesem Veranstaltungsort.</p>
         {% endif %}
+  {% else %}
+  {% if events %}
+  {% for event in events %}
+      <div class="index-cell" id="room">
+          {% include "event-overview.html" %}
+      </div>
+  {% endfor %}
+  {% else %}
+      <p>Leider gibt noch keine Events an diesem Veranstaltungsort.</p>
   {% endif %}
-  {% endif %}
+{% endif %}
+{% endif %}
 </div>
 {% endblock %}

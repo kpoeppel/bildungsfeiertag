@@ -18,6 +18,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '_-ijxz1hdg4cw&#fhd!i__%cniv#26vukzco#^vcc)lp%bj-6_'
 
@@ -39,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "sass_processor",
     'material',
-    'djmoney'
+    'djmoney',
+    'django_registration',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +88,8 @@ DATABASES = {
     }
 }
 
+ACCOUNT_ACTIVATION_DAYS = 7
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -116,7 +122,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+CURRENCIES = ('EUR')
+CURRENCY_CHOICES = [('EUR', '€')]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 

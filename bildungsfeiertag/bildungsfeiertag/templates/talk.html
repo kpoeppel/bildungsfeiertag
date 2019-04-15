@@ -5,16 +5,16 @@
 
 {% block main %}
 
+  <h3>{{event.title}}</h3>
 <div class="index-grid">
-  {% if talk %}
-  <h3>{{talk.title}}</h3>
+
+  {% if event %}
+  <h3>{{event.title}}</h3>
   <div class="index-cell">
-    {{talk.description}}
+    {{event.description}}
   </div>
   {% endif %}
 </div>
 
-<!--{% if user.is_authenticated %} -->
-<!--<div> -->
 
 {% endblock %}

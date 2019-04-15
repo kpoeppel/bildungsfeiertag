@@ -8,28 +8,29 @@
 
 <div class="index-grid">
   {% if site %}
-  <h2>{{site}}</h2>
-  <h3>Vortraege</h3>
-        {% if talks %}
-        {% for talk in talks %}
-            <div class="index-cell" id="talk">
-            {% include "talk-overview.html" %}
-            </div>
-        {% endfor %}
-        {% else %}
-            <p>Leider gibt es noch keine Angebote zu diesem Veranstaltungsort.</p>
-        {% endif %}
+  <h2>{{site.name}}</h2>
 
+  {% if site.roomsdistributed %}
   <h3>Raeume</h3>
-        {% if rooms %}
-        {% for room in rooms %}
+        {% if rooms_events %}
+        {% for room, events in rooms_events %}
             <div class="index-cell" id="room">
             {% include "room-overview.html" %}
+            <div class="index-cell" id="event">
+              {% if events %}
+              {% for event in events %}
+                {% include "event-overview.html" %}
+              {% endfor %}
+              {% else %}
+               -
+              {% endif %}
+            </div>
             </div>
         {% endfor %}
         {% else %}
             <p>Leider gibt keine Raeume an diesem Veranstaltungsort.</p>
         {% endif %}
+  {% endif %}
   {% endif %}
 </div>
 {% endblock %}

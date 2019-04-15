@@ -1,4 +1,6 @@
-<div class="card" onclick="clickCard('/site/{{site.name}}/room/{{room.name}}');">
+<a href="/site/{{site.name}}/room/{{room.name}}">
+<div class="card">
     <div class="card-name">{{ room.name }}</div>
     <div class="card-description">{{ room.seats }}</div>
 </div>
+</a>

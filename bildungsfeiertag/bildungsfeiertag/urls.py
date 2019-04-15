@@ -26,6 +26,6 @@ urlpatterns = [
     path(r"", views.index),
     path(r"about", views.about),
     path(r"site/<str:site_name>", views.site),
-    path(r"site/<str:site_name>/talk/<str:talk_name>", views.talk),
+    path(r"site/<str:site_name>/event/<str:event_title>", views.event),
     path(r"site/<str:site_name>/room/<str:room_name>", views.room),
 ]

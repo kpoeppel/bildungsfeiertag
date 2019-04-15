@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import Http404
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.db import IntegrityError
-from .models import Site, Room, Talk, Vote, MediaFile
+from .models import Site, Room, Event, Vote, MediaFile
 
 
 def index(request):
@@ -22,16 +22,23 @@ def overview(request):
 
 def site(request, site_name):
     site = get_object_or_404(Site, name=site_name)
-    rooms = Room.objects.filter(site=site)
-    talks = [Talk.objects.filter(room=room) for room in rooms]
-    return render(request, "site.html", {"site": site,
-                                         "rooms": rooms,
-                                         "talks": talks})
+    if site.roomsdistributed:
+        rooms = Room.objects.filter(site=site)
+        events = [Event.objects.filter(room=room).order_by("time") for room in rooms]
+        return render(request, "site.html", {"site": site,
+                                             "rooms_events": list(zip(rooms, events))})
+    else:
+        rooms = Room.objects.filter(site=site)
+        events = [Event.objects.filter(room=room).order_by("time") for room in rooms]
+        return render(request, "site.html", {"site": site,
+                                             "rooms_events": list(zip(rooms, events))})
 
 
-def talk(request, site_name, talk_name):
-    talk = get_object_or_404(Talk, name=talk_name)
-    return render(request, "talk.html", {"talk": talk})
+def event(request, site_name, event_title):
+    site = get_object_or_404(Site, name=site_name)
+    events = get_list_or_404(Event, title=event_title)
+    event = [event for event in events if event.room.site == site]
+    return render(request, "event.html", {"event": event, "site": site})
 
 
 def room(request, site_name, room_name):
@@ -40,8 +47,10 @@ def room(request, site_name, room_name):
     room = [room for room in rooms if room.site == site]
     if room:
         room = room[0]
-        talks = Talk.objects.filter(room=room).order_by("time")
-        return render(request, "room.html", {"room": room, "talks": talks})
+        events = Event.objects.filter(room=room).order_by("time")
+        return render(request, "room.html", {"room": room,
+                                             "events": events,
+                                             "site": site})
     else:
         raise Http404("Room does not exist.")
 

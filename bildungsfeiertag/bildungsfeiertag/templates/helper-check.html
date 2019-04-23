@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Bildungsfeiertag{% endblock %}
+
+{% block main %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+{% if user.is_authenticated %}
+{% if helper %}
+<form action="" method="post">
+    {% csrf_token %}
+    Möchten Sie sich sicher als Helfer beim Bildungsfeiertag am {{site.name}} abmelden?
+    <input type="submit" value="Ja" name="Yes">
+</form>
+
+{% else %}
+<form action="" method="post">
+    {% csrf_token %}
+    Möchten Sie sich sicher als Helfer beim Bildungsfeiertag am {{site.name}} anmelden?
+    <input type="submit" value="Ja">
+</form>
+{% endif %}
+{% endif %}
+
+<a href="/site/{{site.name}}">
+<div class="index-cell" id="site">
+Zurück zum Veranstaltungsort.
+</div>
+</a>
+
+{% endblock %}

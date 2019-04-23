@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.db import IntegrityError
-from .models import Site, Room, Event, Vote, MediaFile, User
+from .models import Site, Room, Event, Vote, MediaFile, User, Helper
 from .models import EVENT_DEFAULT_DURATION
 from django_registration.forms import RegistrationForm
 from .forms import ProfileForm, EventForm
@@ -66,6 +66,7 @@ def event_view(request, site_name, event_title):
     else:
         raise Http404("Event does not exist.")
 
+
 def room_view(request, site_name, room_name):
     site = get_object_or_404(Site, name=site_name)
     rooms = get_list_or_404(Room, name=room_name)
@@ -80,6 +81,29 @@ def room_view(request, site_name, room_name):
                                              "user": user})
     else:
         raise Http404("Room does not exist.")
+
+def helper_check_view(request, site_name):
+    site = get_object_or_404(Site, name=site_name)
+    user = request.user
+    helper = Helper.objects.filter(user=user, site=site)
+    if request.method == 'POST':
+        if not helper:
+            helper = Helper(site=site, user=user)
+            helper.save()
+            messages.add_message(request,
+                                 messages.SUCCESS,
+                                 'Thank you for registering as helper for '+site.name+".")
+            return HttpResponseRedirect('')
+        else:
+            helper[0].delete()
+            messages.add_message(request,
+                                 messages.SUCCESS,
+                                 'We are sorry that you are not helper for '+site.name+" anymore.")
+            return HttpResponseRedirect('')
+    return render(request, "helper-check.html", {"site": site,
+                                                 "user": user,
+                                                 "helper": helper})
+
 
 def media_view(request):
     if request.method == "POST":
@@ -153,6 +177,7 @@ def event_create_view(request, site_name):
                                                      "user": request.user,
                                                      "create": True})
 
+
 def event_delete_view(request, site_name, event_title):
     site = get_object_or_404(Site, name=site_name)
     events = get_list_or_404(Event, title=event_title)
@@ -190,6 +215,10 @@ def event_change_view(request, site_name, event_title):
                 print("Yes")
                 data = form.cleaned_data
                 newevent = form.save(commit=False)
+                newevent.submit_date = datetime.datetime.now()
+                newevent.speaker = user
+                newevent.site = site
+                newevent.accepted = False
                 otherevents = Event.objects.filter(title=newevent.title, site=site)
                 if not otherevents or otherevents[0].title == event.title:
                     newevent.save()
@@ -205,7 +234,7 @@ def event_change_view(request, site_name, event_title):
                 # process the data in form.cleaned_data as required
                 # ...
                 # redirect to a new URL:
-                return HttpResponseRedirect('event_change/'+event.title)
+                return HttpResponseRedirect(event.title)
             messages.add_message(request,
                                  messages.ERROR,
                                  'Form was badly filled.')

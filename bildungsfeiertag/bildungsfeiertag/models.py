@@ -120,6 +120,17 @@ class Registration(models.Model):
     )
 
 
+class Helper(models.Model):
+    site = models.OneToOneField(
+        Site,
+        on_delete=models.CASCADE,
+    )
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+    )
+
+
 class MediaFile(models.Model):
     def create_filename(instance, filename):
         extension = "." + filename.split(".")[-1] if "." in filename else ""

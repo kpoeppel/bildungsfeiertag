@@ -40,11 +40,28 @@
   {% else %}
       <p>Leider gibt noch keine Events an diesem Veranstaltungsort.</p>
   {% endif %}
+
+  {% if user.is_authenticated %}
+
   <a href="/site/{{site.name}}/event_create">
   <div class="index-cell" id="event">
     Erstelle einen neuen Event.
   </div>
   </a>
+
+  {% if not helper %}
+  <a href="/site/{{site.name}}/helper-information">
+  <div class="index-cell" id="helper">
+    Als Helfer anmelden.
+  </div>
+  {% else %}
+  <a href="/site/{{site.name}}/helper-information">
+  <div class="index-cell" id="helper">
+    Helferinformationen.
+  </div>
+  </a>
+  {% endif %}
+{% endif %}
 {% endif %}
 {% endif %}
 </div>

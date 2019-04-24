@@ -60,8 +60,12 @@ def event_view(request, site_name, event_title):
                 messages.add_message(request,
                                      messages.SUCCESS,
                                      'You voted for '+event.title+".")
-        votes = len(Vote.objects.filter(event=event))
-        vote = Vote.objects.filter(user=user, event=event)
+        if user.is_authenticated:
+            votes = len(Vote.objects.filter(event=event))
+            vote = Vote.objects.filter(user=user, event=event)
+        else:
+            votes = []
+            vote = None
         return render(request, "event.html", {"event": event, "site": site, "user": user, "votes": votes, "vote": vote})
     else:
         raise Http404("Event does not exist.")
@@ -157,7 +161,7 @@ def event_create_view(request, site_name):
                 messages.add_message(request,
                                      messages.SUCCESS,
                                      'Changes successfully saved.')
-                return HttpResponseRedirect('event_change/'+event.title)
+                return HttpResponseRedirect('event/'+event.title)
             else:
                 messages.add_message(request,
                                      messages.ERROR,
@@ -223,6 +227,7 @@ def event_change_view(request, site_name, event_title):
                 if not otherevents or otherevents[0].title == event.title:
                     newevent.save()
                     event.delete()
+                    event = newevent
                     messages.add_message(request,
                                          messages.SUCCESS,
                                          'Changes successfully saved.')
@@ -234,7 +239,7 @@ def event_change_view(request, site_name, event_title):
                 # process the data in form.cleaned_data as required
                 # ...
                 # redirect to a new URL:
-                return HttpResponseRedirect(event.title)
+                return HttpResponseRedirect("../event/"+event.title)
             messages.add_message(request,
                                  messages.ERROR,
                                  'Form was badly filled.')

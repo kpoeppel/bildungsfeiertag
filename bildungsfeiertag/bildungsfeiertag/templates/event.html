@@ -13,6 +13,7 @@
     {{event.description}}
   </div>
   {{votes}} Stimmen.
+{% if user.is_authenticated %}
 {% if vote %}
 <form action="" method="post">
   {% csrf_token %}
@@ -23,6 +24,7 @@
   {% csrf_token %}
     <input type="submit" value="Hochwaehlen.">
 </form>
+{% endif %}
 {% endif %}
 
 {% if event.speaker == user %}

@@ -257,8 +257,9 @@ def event_change_view(request, site_name, event_title):
     else:
         raise Http404("Room does not exist.")
 
-def register(request):
+def register_view(request):
     # if this is a POST request we need to process the form data
+    print("Hello")
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = RegistrationForm(request.POST)
@@ -273,8 +274,9 @@ def register(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = RegistrationForm()
+        print(form.fields)
     return render(request,
-                  'registration/registration_form.html',
+                  'django_registration/registration_form.html',
                   {'form': form})
 
 

@@ -2,11 +2,12 @@
 
 {% block title %}Bildungsfeiertag{% endblock %}
 
-{% block content %}
+{% block main %}
 
 <form action="" method="post">
+    Register
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <input type="submit" value="Submit">
 </form>
 

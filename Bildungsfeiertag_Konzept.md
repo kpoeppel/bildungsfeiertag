@@ -1,56 +1,75 @@
 Der Bildungsfeiertag
 =====================
 
+## Kurzzusammenfassung
+
+Die Idee des Bildungsfeiertag ist es, an einem arbeitsfreien Tag ein Programm zur persönlichen Fortbildung und zum gemeinsamen Wissensaustausch anzubieten.
+Beispiele hierfür wären:
+
+Weiterbildung im persönlichen Bereich: Wie mache ich meine Steuererklärung richtig?
+
+Weiterbildung mit gesellschaftlichem Anspruch: Wie kann ich meinen CO2-Fußabruck minimieren?
+Wie funktioniert die EU oder der Euro?
+
+Diskussion über gesellschaftliche Themen: Wie sollte man die Subventionen in der Landwirtschaft verteilen?
+
+
 ## Konzeption ##
+Lebenslanges Lernen ist zentral in einem immer komplexer werdenden Umfeld unabdingbar. Der Bildungsfeiertag ist als ein Angebot gedacht, um diese persönliche Weiterentwicklung zu unterstützen.
+Hierbei ist klar, dass der Bildungsfeiertag nur eines von vielen vernetzten Angeboten ist.
+### Was ist das Alleinstellungsmerkmal des Bildungsfeiertags?
+Insbesondere durch das Internet ist der Zugang zu Wissen einfach wie nie zuvor. Über Blogs, Foren und Wikipedia kann man sich zu quasi jedem Thema informieren. Allerdings ist es hierdurch leicht möglich, eine eingeschränkte Sicht auf die Faktenlage zu erhalten.
+
+Durch die Technische Weiterentwicklung ist es
 In einem immer komplexer werdenden gesellschaftlichen Umfeld und einer ständigen
 technischen Weiterentwicklung ist es allein mit dem Schulwissen oft nicht mehr möglich,
-aufgeklärt und selbstständig den Herausforderungen des alltäglichen Lebens 
+aufgeklärt und selbstständig den Herausforderungen des alltäglichen Lebens
 entgegenzutreten. Auch das demokratische Prinzip beschränkt sich nicht allein
 auf die Möglichkeit, seine eigenen Interessen gegenüber denen Anderer durchzusetzen.
 Die Demokratie fordert von jeder und jedem auch die Beteiligung, um gemeinsam als
 Volkssouverän, als Träger des tatsächlichen Machtanspruchs, Zukunftsentscheidungen
 zu treffen, die allen nutzen.
 
-Der Bildungsfeiertag soll in diesem Sinne die Möglichkeit bieten, sich im Sinne 
-der Gemeinschaft gegenseitig weiterzubilden und über gesellschaftliche 
-Grundfragen zu diskutieren. 
-Ein Tag, an dem alle Zeit haben, um sich in gemütlicher Atmosphäre zu treffen 
+Der Bildungsfeiertag soll in diesem Sinne die Möglichkeit bieten, sich im Sinne
+der Gemeinschaft gegenseitig weiterzubilden und über gesellschaftliche
+Grundfragen zu diskutieren.
+Ein Tag, an dem alle Zeit haben, um sich in gemütlicher Atmosphäre zu treffen
 und sich gegenseitig zuzuhören.
 
 Es gibt auch einen Ort, der sich dafür anbietet, wie kein zweiter, die Schule.
 Am Bildungsfeiertag soll aber nicht ein Lehrer seinen Lehrplan abarbeiten, jeder
 soll hier die Möglichkeit bekommen, sein Wissen, seine Fähigkeiten und auch seine
 Meinung zu präsentieren.
-Es soll ein Tag sein, für Kinder, für Eltern, für Singles mit und ohne Niveau, 
+Es soll ein Tag sein, für Kinder, für Eltern, für Singles mit und ohne Niveau,
 für Rentner, für Studenten, für Auszubildende, für Meister Ihres Fachs und solche,
 die es noch werden wollen oder Ihr Fach noch suchen.
-Selbstverständlich soll die Teilnahme an diesem Tag kostenlos sein, Bildung ist 
+Selbstverständlich soll die Teilnahme an diesem Tag kostenlos sein, Bildung ist
 ein Menschenrecht.
 
 ### Organisation des Programms ###
 Um die Interessen der Zuhörer und die Angebote der Fachkundigen zusammen zu
 bringen, wird es eine Website (bildungsfeiertag.de) geben, auf der (auch anonym)
-Vorträge, Workshops oder Diskussionsrunden angeboten werden können. 
-Diese kann dann jeder Einzelne hochwählen, das heißt für die Raumaufteilung 
+Vorträge, Workshops oder Diskussionsrunden angeboten werden können.
+Diese kann dann jeder Einzelne hochwählen, das heißt für die Raumaufteilung
 und als Feedback für die Vortragenden positiv bewerten.
 
 Mit ausreichend Abstand zur Veranstaltung (6 Wochen) wird dieses Forum dann
 geschlossen und die Vorschläge innerhalb einer Woche zu einem stimmigen Programm
 zusammengefasst.
 Die Aufteilung der Räumlichkeiten richtet sich nach dem Angebot und dem
-Interesse an dem jeweiligen Thema. 
+Interesse an dem jeweiligen Thema.
 
 Die Vorträge / Workshops sollten auf Längen von 25 min oder 55 min ausgelegt sein.
 So kann das Programm in einen (Halb-)Stundenrhythmus organisiert werden.
 Es sollte die Zeit für einen anschließende Diskussion und Rückfragen
-(i.d.R. die Hälfte der Zeit) nicht vergessen werden. 
+(i.d.R. die Hälfte der Zeit) nicht vergessen werden.
 Für ein reibungsloses Funktionieren der Technik und die Moderation von
 Diskussionen gibt es in jedem Raum einen Technikverantwortlichen.
 Um das geistige Wohl zu unterstützen, sollte weiterhin auch für das leibliche
 Wohl gesorgt sein.
 
-So wollen wir zu einem demokratischen Wissensaustausch beitragen, von dem die 
-Gesellschaft lebt und der ihr und jedem Einzelnen ermöglicht, aufgeklärt und 
+So wollen wir zu einem demokratischen Wissensaustausch beitragen, von dem die
+Gesellschaft lebt und der ihr und jedem Einzelnen ermöglicht, aufgeklärt und
 selbstbestimmt zu entscheiden und zu handeln.
 
 Wir freuen uns über Ihre Unterstützung!
@@ -58,12 +77,10 @@ Wir freuen uns über Ihre Unterstützung!
 Das Bildungsfeiertagteam
 
 
-
 Anmerkungen:
 - Ausschluss von verfassungswidrigen Vorträgen, alle anderen sollten erlaubt sein
 - politische Reden sollten auf Podiumsdiskussionen (mit allen Parteien) beschränkt werden
 - Ausgleich von politischen und privaten Vorträgen (gesellschaftliches und privates Interesse)
-
 - 2019: 3. Oktober, Aussicht auf separate(r) Feiertag(e)
 - Sendung mit der Maus: Türöffnertag
 - Motto?, -> Tracks (Kinderprogramm, Gesellschaft & Politik, Umwelt, ...)
@@ -82,7 +99,7 @@ Anmerkungen:
 - Wann? 3. Oktober
 - Wo? Hallertau-Gymnasium
 - Warum?
-- Wie? Plattform, Programm, 
+- Wie? Plattform, Programm,
 - offen keine Anmeldepflicht
 - Tag der offenen Tür Richtung
 - unverbindliche Anmeldungen

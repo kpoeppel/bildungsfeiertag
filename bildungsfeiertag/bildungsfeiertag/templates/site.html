@@ -1,0 +1,68 @@
+
+{% extends "base.html" %}
+
+{% block title %}Bildungsfeiertag{% endblock %}
+
+{% block main %}
+
+
+<div class="index-grid">
+{% if site %}
+  <h2>{{site.name}}</h2>
+
+  {% if site.roomsdistributed %}
+  <h3>Raeume</h3>
+        {% if rooms_events %}
+        {% for room, events in rooms_events %}
+            <div class="index-cell" id="room">
+            {% include "room-overview.html" %}
+            <div class="index-cell" id="event">
+              {% if events %}
+              {% for event in events %}
+                {% include "event-overview.html" %}
+              {% endfor %}
+              {% else %}
+               -
+              {% endif %}
+            </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>Leider gibt keine Raeume an diesem Veranstaltungsort.</p>
+        {% endif %}
+  {% else %}
+  {% if events %}
+  {% for event in events %}
+      <div class="index-cell" id="event">
+          {% include "event-overview.html" %}
+      </div>
+  {% endfor %}
+  {% else %}
+      <p>Leider gibt noch keine Events an diesem Veranstaltungsort.</p>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+
+  <a href="/site/{{site.name}}/event_create">
+  <div class="index-cell" id="event">
+    Erstelle einen neuen Event.
+  </div>
+  </a>
+
+  {% if not helper %}
+  <a href="/site/{{site.name}}/helper-information">
+  <div class="index-cell" id="helper">
+    Als Helfer anmelden.
+  </div>
+  {% else %}
+  <a href="/site/{{site.name}}/helper-information">
+  <div class="index-cell" id="helper">
+    Helferinformationen.
+  </div>
+  </a>
+  {% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+</div>
+{% endblock %}

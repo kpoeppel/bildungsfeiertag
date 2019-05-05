@@ -18,10 +18,23 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
+from django.conf.urls import url
 from . import views
 
 
 urlpatterns = [
     path(r"admin/", admin.site.urls),
-    path(r"", views.index)
+    path(r"", views.index_view),
+    path(r"about", views.about_view),
+    path(r"site/<str:site_name>", views.site_view),
+    path(r"site/<str:site_name>/event_change/<str:event_title>", views.event_change_view),
+    path(r"site/<str:site_name>/event_create", views.event_create_view),
+    path(r"site/<str:site_name>/event/<str:event_title>", views.event_view),
+    path(r"site/<str:site_name>/event/<str:event_title>/delete", views.event_delete_view),
+    path(r"site/<str:site_name>/room/<str:room_name>", views.room_view),
+    path(r"site/<str:site_name>/helper-information", views.helper_check_view),
+    path(r"accounts/register/", views.register_view),
+    url(r'^accounts/', include('django_registration.backends.activation.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    path(r"accounts/profile/", views.profile_view),
 ]

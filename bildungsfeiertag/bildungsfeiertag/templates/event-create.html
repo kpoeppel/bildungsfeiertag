@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+
+{% block title %}Bildungsfeiertag{% endblock %}
+
+{% block main %}
+
+{% if user.is_authenticated %}
+
+<form action="" method="post">
+<div class="index-grid">
+  Erstelle / Aendere eine Teilveranstaltung.
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <input type="submit" value="Submit">
+</div>
+</form>
+
+  {% if messages %}
+      {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+      {% endfor %}
+  {% endif %}
+
+{% if not create %}
+  <a href='../event/{{event.title}}/delete'>Delete this event.</a>
+{% endif %}
+
+{% else %}
+Du musst dich einloggen, um eine Teilveranstaltung erstellen zu koennen.
+{% endif %}
+
+{% endblock %}

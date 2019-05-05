@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% block title %}Bildungsfeiertag{% endblock %}
+
+{% block main %}
+
+<div class="index-grid">
+
+  {% if event %}
+  <h3>{{event.title}}</h3>
+  <div class="index-cell">
+    {{event.description}}
+  </div>
+  {{votes}} Stimmen.
+{% if user.is_authenticated %}
+{% if vote %}
+<form action="" method="post">
+  {% csrf_token %}
+    <input type="submit" value="Nicht mehr hochwaehlen.">
+</form>
+{% else %}
+<form action="" method="post">
+  {% csrf_token %}
+    <input type="submit" value="Hochwaehlen.">
+</form>
+{% endif %}
+{% endif %}
+
+{% if event.speaker == user %}
+<a href="../event_change/{{event.title}}">Diesen Event aendern</a>
+{% endif %}
+  {% endif %}
+</div>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

@@ -11,6 +11,7 @@
 
 ## Konzept ##
 - Konzept-Text zusammenfassen
+- Howto: Wie mache ich eine gute Praesentation? Wichtig: Quellen
 
 ## Gespräche führen ##
 - Schulleiter
@@ -21,6 +22,11 @@
 - Donaukurier
 - Presse
 
+## Zeitplan - Deadlines ##
+Website praestentationsfertig: 1. Juni
+Website online fuer Test-Anmeldungen: 22. Juni
+Gespraeche mit den essentiellen Organisationspartnern: 1. Juli
+Website online fuer echte Anmeldungen: 1. Juli
 
 Jeder, der mithelfen will darf sich eintragen (in Klammern, siehe oben), oder Punkte hinzufügen (mit Vermerk).
 Danke für Eure Mithilfe!

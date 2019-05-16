@@ -32,7 +32,7 @@ urlpatterns = [
     path(r"site/<str:site_name>/event/<str:event_title>", views.event_view),
     path(r"site/<str:site_name>/event/<str:event_title>/delete", views.event_delete_view),
     path(r"site/<str:site_name>/room/<str:room_name>", views.room_view),
-    path(r"site/<str:site_name>/helper-information", views.helper_check_view),
+    path(r"site/<str:site_name>/helper-information", views.helper_info_view),
     path(r"accounts/register/", views.register_view),
     url(r'^accounts/', include('django_registration.backends.activation.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),

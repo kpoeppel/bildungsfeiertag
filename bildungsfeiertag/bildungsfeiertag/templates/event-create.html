@@ -1,6 +1,8 @@
 
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Bildungsfeiertag{% endblock %}
 
 {% block main %}
@@ -11,7 +13,7 @@
 <div class="index-grid">
   Erstelle / Aendere eine Teilveranstaltung.
   {% csrf_token %}
-  {{ form.as_p }}
+  {{ form|crispy }}
 
   <input type="submit" value="Submit">
 </div>

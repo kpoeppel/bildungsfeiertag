@@ -13,7 +13,8 @@
     {{event.description}}
   </div>
   {{votes}} Stimmen.
-{% if user.is_authenticated %}
+
+{% if user.is_authenticated and event.active %}
 {% if vote %}
 <form action="" method="post">
   {% csrf_token %}

@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Bildungsfeiertag{% endblock %}
 
 {% block main %}
 
 <form action="" method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ form|crispy }}
     <input type="submit" value="Submit">
 </form>
 
+<a href=''>Passwort vergessen?</a>
 
 {% endblock %}

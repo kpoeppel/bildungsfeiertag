@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     "sass_processor",
     'material',
     'djmoney',
+    'crispy_forms',
     'django_registration',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
@@ -113,6 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
+AUTH_USER_MODEL = 'bildungsfeiertag.User'
+
+
 LANGUAGE_CODE = 'de-de'
 
 USE_I18N = True
@@ -120,6 +125,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 CURRENCIES = ('EUR')
 CURRENCY_CHOICES = [('EUR', '€')]

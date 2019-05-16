@@ -1,25 +1,15 @@
 
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Bildungsfeiertag{% endblock %}
 
 {% block main %}
 
 {% if user.is_authenticated %}
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-</form>
-
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
-    {% endfor %}
-{% endif %}
-
-<h3> Deine Teilveranstaltungen </h3>
+<h3> Deine Angebote </h3>
 {% if sites_events %}
 {% for site, event in sites_events %}
     <div class="index-cell" id="event">
@@ -29,6 +19,34 @@
 {% else %}
     <p>Leider bieten Sie keinen Teilveranstaltung an.</p>
 {% endif %}
+
+<h3> Deine Votes </h3>
+{% if sites_events_voted %}
+{% for site, event in sites_events_voted %}
+    <div class="index-cell" id="event">
+        {% include "event-overview.html" %}
+    </div>
+{% endfor %}
+{% else %}
+    <p>Sie haben noch fuer keine Veranstaltung gewaehlt.</p>
+{% endif %}
+
+
+<h4> Deine Daten </h4>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" value="Aendern">
+</form>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+
 {% else %}
 Du bist nicht eingeloggt.
 {% endif %}

@@ -1,13 +1,13 @@
 # ToDo's #
 
 ## Website ##
-- HTML-Text noch verbessern, template-Verzeichnis
+- HTML-Text noch verbessern (Vielleicht im Mehrsprachenformat?)
 - CSS-Dateien schreiben
 - Konzept-Text einfügen
-- Bilder einbauen
+- Bilder einbauen (Korbi)
 - Impressum, Datenschutzbelehrung einfügen
 - Tagesplan/Ablaufplan erzeugen
-- als Helfer anmelden (Korbi)
+- Logo (Vorschlaege von Korbi in Development-branch)
 
 ## Konzept ##
 - Konzept-Text zusammenfassen
@@ -16,8 +16,10 @@
 - Schulleiter
 - Landratsamt
 - Gemeinde
-- Tausch-Kreis?
+- Tausch-Kreis Pfaffenhofen?
 
+- Donaukurier
+- Presse
 
 
 Jeder, der mithelfen will darf sich eintragen (in Klammern, siehe oben), oder Punkte hinzufügen (mit Vermerk).

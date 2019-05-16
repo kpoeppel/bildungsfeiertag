@@ -1,4 +1,5 @@
 # the gitignore-file
 
 bildungsfeiertag/__pycache__/
+bildungsfeiertag/bildungsfeiertag/__pycache__/
 bildungsfeiertag/db.sqlite

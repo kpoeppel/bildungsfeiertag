@@ -14,6 +14,7 @@ Wie funktioniert die EU oder der Euro?
 Abgesehen von diesen Angeboten soll der Bildungsfeiertag insbesondere auch zum gesellschaftlichen Austausch über politische und soziale Themen genutzt werden.
 
 - Diskussion über gesellschaftliche Themen: Wie sollte man die Subventionen in der Landwirtschaft verteilen?
+- Vortrag eines Bauern über das Volksbegehren zum Artenschutz
 
 
 ## Konzeption ##
@@ -27,17 +28,30 @@ Wenn beispielsweise ein Vortrag zum Thema "Energiesparen im Haushalt" angeboten 
 
 2. __Gesellschaft persönlich machen:__
 Viele Menschen fühlen sich von der Politik nicht ernst genommen und denken, dass ihre Stimme und ihre Anliegen nicht berücksichtigt werden. Ein Grund dafür könnte sein, dass es keine geeignete Plattform gibt, um eigene Ideen zu formulieren und zu äußern.
-Außerdem ergibt sich die Möglichkeit, sich mit einem Thema
+Es soll ein Format geschaffen werden, dass dazu einlädt, sich konkrete Lösungen und Vorschläge zu überlegen und deren Konsequenzen abzuwägen.
+Als Beispiel könnte man sich mit der Ausweisung von Gewerbegebieten im Gemeindegebiet auseinandersetzen. Auf der einen Seite müssen wirtschaftliche Punkte berücksichtigt werden, aber auch ökologische und gesellschaftliche Aspekte sind für die Entscheidung ausschlaggebend. Bei solchen Themen, die einen merklichen Unterschied für die Beteiligten machen, soll klar werden, wie schwierig ein Ausgleich der individuellen Interessen ist. Gleichzeitig ist es eine Aufforderung, seinen eigenen Standpunkt in den Entscheidungsfindungsprozess einfließen zu lassen.
+
 
 3. __Austausch über lokale Themen:__
+Ein weiteres Alleinstellungsmerkmal des Bildungsfeiertags ist der regionale Bezug, der eine gemeinsame Basis für die Teilnehmer darstellen soll.
+Dabei ist wichtig, dass dadurch Barrieren abgebaut werden sollen miteinander ins Gespräch zu kommen. Keinesfalls soll es dadurch zu einer Abschottung nach außen kommen.
 
 3. __Neue Ansichten zugänglich machen:__
-Allerdings ist es hierdurch leicht möglich, eine eingeschränkte Sicht auf die Faktenlage zu erhalten. Diese Filterblase kann zu einer von außen betrachtet verzerrten Weltansicht führen.
+Allerdings ist es hierdurch leicht möglich, eine eingeschränkte Sicht auf die Faktenlage zu erhalten. Diese Filterblase kann zu einer von außen betrachtet verzerrten Weltansicht führen, da ein Großteil der Tatsachen ignoriert wird.
+Ein ähnlicher Ansatz soll auch in den Vorträgen verfolgt werden. Jede:r kann einen Vortrag über ein selbst ausgesuchtes Thema halten. Eine Selektion aufgrund von organisatorischen Gegebenheiten findet demokratisch durch die Teilnehmer statt.
 Das Kernanliegen des Bildungsfeiertags ist es, Gesellschaft auf ein persönliche
 
 Durch die Technische Weiterentwicklung ist es
-In einem immer komplexer werdenden gesellschaftlichen Umfeld und einer ständigen
-technischen Weiterentwicklung ist es allein mit dem Schulwissen oft nicht mehr möglich,
+
+
+
+
+
+
+
+
+
+In einem immer komplexer werdenden gesellschaftlichen Umfeld und einer ständigen technischen Weiterentwicklung ist es allein mit dem Schulwissen oft nicht mehr möglich,
 aufgeklärt und selbstständig den Herausforderungen des alltäglichen Lebens
 entgegenzutreten. Auch das demokratische Prinzip beschränkt sich nicht allein
 auf die Möglichkeit, seine eigenen Interessen gegenüber denen Anderer durchzusetzen.
@@ -51,10 +65,7 @@ Grundfragen zu diskutieren.
 Ein Tag, an dem alle Zeit haben, um sich in gemütlicher Atmosphäre zu treffen
 und sich gegenseitig zuzuhören.
 
-Es gibt auch einen Ort, der sich dafür anbietet, wie kein zweiter, die Schule.
-Am Bildungsfeiertag soll aber nicht ein Lehrer seinen Lehrplan abarbeiten, jeder
-soll hier die Möglichkeit bekommen, sein Wissen, seine Fähigkeiten und auch seine
-Meinung zu präsentieren.
+Es gibt auch einen Ort, der sich dafür anbietet, wie kein zweiter, die Schule. Am Bildungsfeiertag soll aber nicht ein Lehrer seinen Lehrplan abarbeiten, jeder soll hier die Möglichkeit bekommen, sein Wissen, seine Fähigkeiten und auch seine Meinung zu präsentieren.
 Es soll ein Tag sein, für Kinder, für Eltern, für Singles mit und ohne Niveau,
 für Rentner, für Studenten, für Auszubildende, für Meister Ihres Fachs und solche,
 die es noch werden wollen oder Ihr Fach noch suchen.

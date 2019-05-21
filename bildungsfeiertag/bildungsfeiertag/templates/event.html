@@ -15,6 +15,7 @@
   {{votes}} Stimmen.
 
 {% if user.is_authenticated and event.active %}
+{% if not site.votingclosed %}
 {% if vote %}
 <form action="" method="post">
   {% csrf_token %}
@@ -33,6 +34,7 @@
 {% endif %}
   {% endif %}
 </div>
+{% endif %}
 
 {% if messages %}
     {% for message in messages %}

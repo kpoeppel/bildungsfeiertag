@@ -4,3 +4,4 @@ bildungsfeiertag/__pycache__
 bildungsfeiertag/__pycache__/*
 bildungsfeiertag/db.sqlite
 *.pyc
+bildungsfeiertag/sent_emails

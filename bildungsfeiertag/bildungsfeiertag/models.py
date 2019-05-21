@@ -30,6 +30,7 @@ class Site(models.Model):
     address = models.TextField()
     # image = models.CharField(max_length=128)
     callforeventsclosed = models.BooleanField()
+    votingclosed = models.BooleanField()
     roomsdistributed = models.BooleanField()
     organizer = models.ForeignKey(User,
                                   on_delete=models.CASCADE)
@@ -87,9 +88,9 @@ class Event(models.Model):
 
 
 class ScheduledEvent(models.Model):
-    room = models.ForeignKey('Room',
+    room = models.ForeignKey(Room,
                              on_delete=models.CASCADE)
-    time = models.TimeField()
+    time = models.DateTimeField()
     event = models.OneToOneField(
         Event,
         on_delete=models.CASCADE,
@@ -100,42 +101,42 @@ class ScheduledEvent(models.Model):
 
 
 class Vote(models.Model):
-    event = models.OneToOneField(
+    event = models.ForeignKey(
         Event,
         on_delete=models.CASCADE,
     )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )
 
 class Interest(models.Model):
-    event = models.OneToOneField(
+    scheduled_event = models.ForeignKey(
         ScheduledEvent,
         on_delete=models.CASCADE,
     )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )
 
 class Registration(models.Model):
-    event = models.OneToOneField(
+    scheduled_event = models.ForeignKey(
         ScheduledEvent,
         on_delete=models.CASCADE,
     )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )
 
 
 class Helper(models.Model):
-    site = models.OneToOneField(
+    site = models.ForeignKey(
         Site,
         on_delete=models.CASCADE,
     )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )

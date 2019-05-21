@@ -12,6 +12,8 @@ admin.site.register(models.Event)
 admin.site.register(models.Vote)
 admin.site.register(models.Registration)
 admin.site.register(models.Interest)
+admin.site.register(models.ScheduledEvent)
+admin.site.register(models.Helper)
 
 
 class CustomUserAdmin(UserAdmin):

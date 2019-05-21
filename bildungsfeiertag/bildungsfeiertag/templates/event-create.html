@@ -7,7 +7,9 @@
 
 {% block main %}
 
-{% if user.is_authenticated %}
+{% if not site.callforeventsclosed %}
+
+{% if user.is_authenticated and user.username %}
 
 <form action="" method="post">
 <div class="index-grid">
@@ -30,7 +32,15 @@
 {% endif %}
 
 {% else %}
-Du musst dich einloggen, um eine Teilveranstaltung erstellen zu koennen.
+{% if not user.is_authenticated %}
+Sie muessen sich einloggen, um eine Teilveranstaltung erstellen zu koennen.
+{% elif not user.username %}
+Sie muessen sich ein Pseudonym geben, um eine Teilveranstaltung erstellen zu koennen.
+{% endif %}
+{% endif %}
+
+{% else %}
+Leider kann man ueber diesen Weg keine Events mehr fuer den Bildungsfeiertag am {{site.name}} erstellen.
 {% endif %}
 
 {% endblock %}

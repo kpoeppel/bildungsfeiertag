@@ -3,11 +3,13 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.db import IntegrityError
-from .models import Site, Room, Event, Vote, MediaFile, User, Helper
+from .models import Site, Room, Event, Vote, MediaFile
+from .models import User, Helper, ScheduledEvent, Interest, Registration
 from .models import EVENT_DEFAULT_DURATION
 from .forms import ProfileForm, EventForm, UserRegistrationForm
 import datetime
 from django.contrib import messages
+from django_registration.backends.activation.views import RegistrationView
 
 def index_view(request):
     sites = Site.objects.all()
@@ -32,9 +34,10 @@ def site_view(request, site_name):
         helper = None
     if site.roomsdistributed:
         rooms = Room.objects.filter(site=site)
-        sched_events = [ScheduledEvent.objects.filter(room=room).order_by("time") for room in rooms]
+        scheduled_events = [ScheduledEvent.objects.filter(room=room).order_by("time") for room in rooms]
+        print(scheduled_events)
         return render(request, "site.html", {"site": site,
-                                             "rooms_events": list(zip(rooms, sched_events)),
+                                             "rooms_events": list(zip(rooms, scheduled_events)),
                                              "user": user,
                                              "helper": helper})
     else:
@@ -43,6 +46,41 @@ def site_view(request, site_name):
                                              "events": events,
                                              "user": user,
                                              "helper": helper})
+
+
+def scheduled_event_view(request, site_name, event_title):
+    site = get_object_or_404(Site, name=site_name)
+    events = get_list_or_404(Event, title=event_title)
+    scheduled_event = [ScheduledEvent.objects.filter(event=event) for event in events if event.site == site]
+    user = request.user
+    if scheduled_event and scheduled_event[0]:
+        scheduled_event = scheduled_event[0][0]
+        if request.method == 'POST':
+            interest = Interest.objects.filter(user=user, scheduled_event=scheduled_event)
+            if interest:
+                interest[0].delete()
+                messages.add_message(request,
+                                     messages.SUCCESS,
+                                     'You are not interested in '+scheduled_event.title+" anymore.")
+            else:
+                interest = Interest(user=user, event=event)
+                interest.save()
+                messages.add_message(request,
+                                     messages.SUCCESS,
+                                     'You are interested in '+event.title+".")
+        if user.is_authenticated:
+            interests = len(Interest.objects.filter(scheduled_event=scheduled_event))
+            interest = Interest.objects.filter(user=user, scheduled_event=scheduled_event)
+        else:
+            interests = len(Interest.objects.filter(scheduled_event=scheduled_event))
+            interest = None
+        return render(request,
+                      "scheduled-event.html",
+                      {"scheduled_event": scheduled_event,
+                       "site": site, "user": user,
+                       "interests": interests, "interest": interest})
+    else:
+        raise Http404("Event does not exist.")
 
 
 def event_view(request, site_name, event_title):
@@ -83,9 +121,9 @@ def room_view(request, site_name, room_name):
     user = request.user
     if room:
         room = room[0]
-        events = Event.objects.filter(room=room).order_by("time")
+        scheduled_events = ScheduledEvent.objects.filter(room=room).order_by("time")
         return render(request, "room.html", {"room": room,
-                                             "events": events,
+                                             "scheduled_events": scheduled_events,
                                              "site": site,
                                              "user": user})
     else:
@@ -262,30 +300,29 @@ def event_change_view(request, site_name, event_title):
     else:
         raise Http404("Room does not exist.")
 
-def register_view(request):
+
+class register_view(RegistrationView):
     # if this is a POST request we need to process the form data
-    print("Hello")
-    user = request.user
-    if request.method == 'POST':
+    template_name = 'django_registration/registration_form.html'
+    form_class = UserRegistrationForm
+
+    def post(self, request, *args, **kwargs):
         # create a form instance and populate it with data from the request:
-        form = UserRegistrationForm(request.POST)
+        form = self.form_class(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            print("Hello")
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-
-
+            self.create_inactive_user(form)
             return HttpResponseRedirect('complete')
+        return render(request, self.template_name, {'form': form})
 
     # if a GET (or any other method) we'll create a blank form
-    else:
+    def get(self, request, *args, **kwargs):
         form = UserRegistrationForm()
-        print(form.fields)
-    return render(request,
-                  'django_registration/registration_form.html',
-                  {'form': form})
+        # print(form.fields)
+        return render(request, self.template_name, {'form': form})
 
 
 

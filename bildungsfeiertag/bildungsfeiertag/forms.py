@@ -27,10 +27,11 @@ class ProfileForm(forms.ModelForm):
         return self.initial.get('password')
 
 
-
 class UserRegistrationForm(RegistrationForm):
+
     class Meta(RegistrationForm.Meta):
         model = User
+        fields = ['email', 'username']
 
 
 class EventForm(forms.ModelForm):

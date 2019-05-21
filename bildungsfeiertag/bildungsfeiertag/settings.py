@@ -91,6 +91,11 @@ DATABASES = {
 }
 
 ACCOUNT_ACTIVATION_DAYS = 7
+# DEFAULT_FROM_EMAIL = "newtestmail@web.de"
+# EMAIL_USE_SSL = True
+# EMAIL_HOST_USER = 'newtestmail'
+# EMAIL_HOST = 'web.de'
+# EMAIL_HOST_PASSWORD = 'testtest1'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
@@ -133,6 +138,7 @@ CURRENCY_CHOICES = [('EUR', '€')]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 

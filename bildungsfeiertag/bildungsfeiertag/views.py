@@ -3,12 +3,13 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.db import IntegrityError
-from .models import Site, Room, Event, Vote, MediaFile, User, Helper
+from .models import Site, Room, Event, Vote, MediaFile
+from .models import User, Helper, ScheduledEvent, Interest, Registration
 from .models import EVENT_DEFAULT_DURATION
-from django_registration.forms import RegistrationForm
-from .forms import ProfileForm, EventForm
+from .forms import ProfileForm, EventForm, UserRegistrationForm
 import datetime
 from django.contrib import messages
+from django_registration.backends.activation.views import RegistrationView
 
 def index_view(request):
     sites = Site.objects.all()
@@ -27,17 +28,59 @@ def overview_view(request):
 def site_view(request, site_name):
     site = get_object_or_404(Site, name=site_name)
     user = request.user
+    if user.is_authenticated:
+        helper = Helper.objects.filter(user=user, site=site)
+    else:
+        helper = None
     if site.roomsdistributed:
         rooms = Room.objects.filter(site=site)
-        sched_events = [ScheduledEvent.objects.filter(room=room).order_by("time") for room in rooms]
+        scheduled_events = [ScheduledEvent.objects.filter(room=room).order_by("time") for room in rooms]
+        print(scheduled_events)
         return render(request, "site.html", {"site": site,
-                                             "rooms_events": list(zip(rooms, sched_events)),
-                                             "user": user})
+                                             "rooms_events": list(zip(rooms, scheduled_events)),
+                                             "user": user,
+                                             "helper": helper})
     else:
         events = Event.objects.filter(site=site, active=True).order_by("submit_date")
         return render(request, "site.html", {"site": site,
                                              "events": events,
-                                             "user": user})
+                                             "user": user,
+                                             "helper": helper})
+
+
+def scheduled_event_view(request, site_name, event_title):
+    site = get_object_or_404(Site, name=site_name)
+    events = get_list_or_404(Event, title=event_title)
+    scheduled_event = [ScheduledEvent.objects.filter(event=event) for event in events if event.site == site]
+    user = request.user
+    if scheduled_event and scheduled_event[0]:
+        scheduled_event = scheduled_event[0][0]
+        if request.method == 'POST':
+            interest = Interest.objects.filter(user=user, scheduled_event=scheduled_event)
+            if interest:
+                interest[0].delete()
+                messages.add_message(request,
+                                     messages.SUCCESS,
+                                     'You are not interested in '+scheduled_event.title+" anymore.")
+            else:
+                interest = Interest(user=user, event=event)
+                interest.save()
+                messages.add_message(request,
+                                     messages.SUCCESS,
+                                     'You are interested in '+event.title+".")
+        if user.is_authenticated:
+            interests = len(Interest.objects.filter(scheduled_event=scheduled_event))
+            interest = Interest.objects.filter(user=user, scheduled_event=scheduled_event)
+        else:
+            interests = len(Interest.objects.filter(scheduled_event=scheduled_event))
+            interest = None
+        return render(request,
+                      "scheduled-event.html",
+                      {"scheduled_event": scheduled_event,
+                       "site": site, "user": user,
+                       "interests": interests, "interest": interest})
+    else:
+        raise Http404("Event does not exist.")
 
 
 def event_view(request, site_name, event_title):
@@ -78,15 +121,15 @@ def room_view(request, site_name, room_name):
     user = request.user
     if room:
         room = room[0]
-        events = Event.objects.filter(room=room).order_by("time")
+        scheduled_events = ScheduledEvent.objects.filter(room=room).order_by("time")
         return render(request, "room.html", {"room": room,
-                                             "events": events,
+                                             "scheduled_events": scheduled_events,
                                              "site": site,
                                              "user": user})
     else:
         raise Http404("Room does not exist.")
 
-def helper_check_view(request, site_name):
+def helper_info_view(request, site_name):
     site = get_object_or_404(Site, name=site_name)
     user = request.user
     helper = Helper.objects.filter(user=user, site=site)
@@ -104,7 +147,7 @@ def helper_check_view(request, site_name):
                                  messages.SUCCESS,
                                  'We are sorry that you are not helper for '+site.name+" anymore.")
             return HttpResponseRedirect('')
-    return render(request, "helper-check.html", {"site": site,
+    return render(request, "helper-info.html", {"site": site,
                                                  "user": user,
                                                  "helper": helper})
 
@@ -257,25 +300,29 @@ def event_change_view(request, site_name, event_title):
     else:
         raise Http404("Room does not exist.")
 
-def register(request):
+
+class register_view(RegistrationView):
     # if this is a POST request we need to process the form data
-    if request.method == 'POST':
+    template_name = 'django_registration/registration_form.html'
+    form_class = UserRegistrationForm
+
+    def post(self, request, *args, **kwargs):
         # create a form instance and populate it with data from the request:
-        form = RegistrationForm(request.POST)
+        form = self.form_class(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            print("Hello")
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
+            self.create_inactive_user(form)
             return HttpResponseRedirect('complete')
+        return render(request, self.template_name, {'form': form})
 
     # if a GET (or any other method) we'll create a blank form
-    else:
-        form = RegistrationForm()
-    return render(request,
-                  'registration/registration_form.html',
-                  {'form': form})
+    def get(self, request, *args, **kwargs):
+        form = UserRegistrationForm()
+        # print(form.fields)
+        return render(request, self.template_name, {'form': form})
 
 
 
@@ -285,40 +332,44 @@ def profile_view(request):
     if user.is_authenticated:
         if request.method == 'POST':
             # create a form instance and populate it with data from the request:
-            form = ProfileForm(data=request.POST)
+            form = ProfileForm(data=request.POST, instance=request.user)
             # check whether it's valid:
-
+            print("Hallo")
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            #print(form)
+            #print(form.errors)
             if form.is_valid():
-                # process the data in form.cleaned_data as required
-                # ...
-                # redirect to a new URL:
                 newuser = form.save(commit=False)
-                otherusers = User.objects.filter(username=newuser.name)
-                if not otherusers or newuser.username == user.username:
-                    user.username = newuser.username
-                    user.first_name = newuser.first_name
-                    user.last_name = newuser.last_name
-                    user.email = newuser.email
-                    user.save()
-                    messages.add_message(request,
-                                         messages.SUCCESS,
-                                         'Changes successfully saved.')
+                print(User.objects.filter(email=newuser.email), user.email)
+                if user.email == newuser.email or not User.objects.filter(email=newuser.email):
+                    newuser.save()
                 else:
                     messages.add_message(request,
                                          messages.ERROR,
-                                         'Username exists.')
+                                         'Email exists.')
+            else:
+                messages.add_message(request,
+                                     messages.ERROR,
+                                     'Bad input.')
             return HttpResponseRedirect('')
 
         # if a GET (or any other method) we'll create a blank form
         else:
             events = Event.objects.filter(speaker=user)
+            votes = Vote.objects.filter(user=user)
+            events_voted = [vote.event for vote in votes]
+            sites_voted = [event.site for event in events_voted]
             form = ProfileForm(instance=request.user)
             sites = [event.site for event in events]
             sites_events = list(zip(sites, events))
+            sites_events_voted = list(zip(sites_voted, events_voted))
             return render(request,
                           'profile.html',
                           {'form': form,
                            'sites_events': sites_events,
+                           'sites_events_voted': sites_events_voted,
                            'user': request.user})
     else:
         return render(request,

@@ -8,10 +8,10 @@
   {% if room %}
   <h2>{{room}}</h2>
   <h3>Vortraege</h3>
-        {% if events %}
-        {% for event in events %}
+        {% if scheduled_events %}
+        {% for scheduled_event in scheduled_events %}
             <div class="index-cell" id="event">
-            {% include "event-overview.html" %}
+            {% include "scheduled-event-overview.html" %}
             </div>
         {% endfor %}
         {% else %}

@@ -1,10 +1,11 @@
-import docupy
 from datetime import datetime
 from django.db import models
-import django.contrib.auth.models
+from django.contrib.auth.models import AbstractUser
 from djmoney.models.fields import MoneyField
 from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
 from django.core.validators import MinValueValidator, MaxValueValidator
+from phonenumber_field.modelfields import PhoneNumberField
+from django.utils.translation import gettext, gettext_lazy as _
 
 EVENT_DURATIONS = (('30', "kurz (15 + 10 min)"),
                    ('60', "lang (35 + 15 min)"),
@@ -13,13 +14,23 @@ EVENT_DURATIONS = (('30', "kurz (15 + 10 min)"),
 EVENT_DEFAULT_DURATION = EVENT_DURATIONS[0]
 
 
-User = django.contrib.auth.models.User
+class User(AbstractUser):
+    # add additional fields in here
+    phone_number = PhoneNumberField(blank=True)
+    USERNAME_FIELD = 'email'
+    email = models.EmailField(_('email address'), unique=True)
+    REQUIRED_FIELDS = ['username']
+
+    def __str__(self):
+        return self.email
+
 
 class Site(models.Model):
     name = models.CharField(max_length=100)
     address = models.TextField()
     # image = models.CharField(max_length=128)
     callforeventsclosed = models.BooleanField()
+    votingclosed = models.BooleanField()
     roomsdistributed = models.BooleanField()
     organizer = models.ForeignKey(User,
                                   on_delete=models.CASCADE)
@@ -77,9 +88,9 @@ class Event(models.Model):
 
 
 class ScheduledEvent(models.Model):
-    room = models.ForeignKey('Room',
+    room = models.ForeignKey(Room,
                              on_delete=models.CASCADE)
-    time = models.TimeField()
+    time = models.DateTimeField()
     event = models.OneToOneField(
         Event,
         on_delete=models.CASCADE,
@@ -90,42 +101,42 @@ class ScheduledEvent(models.Model):
 
 
 class Vote(models.Model):
-    event = models.OneToOneField(
+    event = models.ForeignKey(
         Event,
         on_delete=models.CASCADE,
     )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )
 
 class Interest(models.Model):
-    event = models.OneToOneField(
+    scheduled_event = models.ForeignKey(
         ScheduledEvent,
         on_delete=models.CASCADE,
     )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )
 
 class Registration(models.Model):
-    event = models.OneToOneField(
+    scheduled_event = models.ForeignKey(
         ScheduledEvent,
         on_delete=models.CASCADE,
     )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )
 
 
 class Helper(models.Model):
-    site = models.OneToOneField(
+    site = models.ForeignKey(
         Site,
         on_delete=models.CASCADE,
     )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )

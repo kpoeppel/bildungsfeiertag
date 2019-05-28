@@ -13,13 +13,13 @@
   {% if site.roomsdistributed %}
   <h3>Raeume</h3>
         {% if rooms_events %}
-        {% for room, events in rooms_events %}
+        {% for room, scheduled_events in rooms_events %}
             <div class="index-cell" id="room">
             {% include "room-overview.html" %}
             <div class="index-cell" id="event">
               {% if events %}
-              {% for event in events %}
-                {% include "event-overview.html" %}
+              {% for scheduled_event in scheduled_events %}
+                {% include "scheduled-event-overview.html" %}
               {% endfor %}
               {% else %}
                -
@@ -31,23 +31,25 @@
             <p>Leider gibt keine Raeume an diesem Veranstaltungsort.</p>
         {% endif %}
   {% else %}
-  {% if events %}
-  {% for event in events %}
+    {% if events %}
+    {% for event in events %}
       <div class="index-cell" id="event">
           {% include "event-overview.html" %}
       </div>
-  {% endfor %}
-  {% else %}
+      {% endfor %}
+    {% else %}
       <p>Leider gibt noch keine Events an diesem Veranstaltungsort.</p>
-  {% endif %}
+      {% endif %}
 
   {% if user.is_authenticated %}
 
+  {% if not site.callforeventsclosed %}
   <a href="/site/{{site.name}}/event_create">
   <div class="index-cell" id="event">
     Erstelle einen neuen Event.
   </div>
   </a>
+  {% endif %}
 
   {% if not helper %}
   <a href="/site/{{site.name}}/helper-information">

@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     "sass_processor",
     'material',
     'djmoney',
+    'crispy_forms',
     'django_registration',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
@@ -89,6 +91,11 @@ DATABASES = {
 }
 
 ACCOUNT_ACTIVATION_DAYS = 7
+# DEFAULT_FROM_EMAIL = "newtestmail@web.de"
+# EMAIL_USE_SSL = True
+# EMAIL_HOST_USER = 'newtestmail'
+# EMAIL_HOST = 'web.de'
+# EMAIL_HOST_PASSWORD = 'testtest1'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
@@ -113,6 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
+AUTH_USER_MODEL = 'bildungsfeiertag.User'
+
+
 LANGUAGE_CODE = 'de-de'
 
 USE_I18N = True
@@ -121,11 +131,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+CRISPY_TEMPLATE_PACK = 'uni_form'
+
 CURRENCIES = ('EUR')
 CURRENCY_CHOICES = [('EUR', '€')]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 

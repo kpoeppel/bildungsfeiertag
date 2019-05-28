@@ -9,11 +9,12 @@
 <div class="index-grid">
 
   {% if scheduled_event %}
-  <h3>{{scheduled_event.title}}</h3>
+  <h3>{{scheduled_event.event.title}}</h3>
   <div class="index-cell">
-    {{scheduled_event.description}}
+    {{scheduled_event.event.description}}
   </div>
-  {% endif %}
+  von {{scheduled_event.event.speaker}}
+{% endif %}
 </div>
 
 

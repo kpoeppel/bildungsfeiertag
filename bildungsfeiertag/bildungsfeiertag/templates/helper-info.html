@@ -18,12 +18,16 @@
     <input type="submit" value="Ja" name="Yes">
 </form>
 
-{% else %}
+{% elif user.phone_number and user.first_name and user.last_name %}
 <form action="" method="post">
     {% csrf_token %}
     Möchten Sie sich sicher als Helfer beim Bildungsfeiertag am {{site.name}} anmelden?
     <input type="submit" value="Ja">
 </form>
+
+{% else %}
+Sie muessen erst in Ihren <a href="/accounts/profile">Daten</a> Ihren vollen Namen und eine Handynummer angeben.
+
 {% endif %}
 {% endif %}
 

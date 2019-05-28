@@ -32,6 +32,15 @@
     figure, video, .youtube {
         display: none;
     }
+
+    div{
+      width: 20%;
+
+    }
+
+    img{
+      width: 100%;
+    }
 }
 
 article {
@@ -189,4 +198,18 @@ article.card {
             }
         }
     }
+}
+
+
+.index-Grid{
+  font-size: inherit;
+
+  h3{
+      font-size: inherit;
+  }
+
+  .index-cell{
+    font-size: inherit;
+
+  }
 }

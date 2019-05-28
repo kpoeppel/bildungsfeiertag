@@ -1,5 +1,5 @@
-
 {% extends "base.html" %}
+{% load i18n %}
 
 {% load crispy_forms_tags %}
 
@@ -13,7 +13,7 @@
 
 <form action="" method="post">
 <div class="index-grid">
-  Erstelle / Aendere eine Teilveranstaltung.
+  {% trans "Create / Change a subevent"%}.
   {% csrf_token %}
   {{ form|crispy }}
 
@@ -28,19 +28,19 @@
   {% endif %}
 
 {% if not create %}
-  <a href='../event/{{event.title}}/delete'>Delete this event.</a>
+  <a href='../event/{{event.title}}/delete'>{% trans "Delete this event." %}</a>
 {% endif %}
 
 {% else %}
 {% if not user.is_authenticated %}
-Sie muessen sich einloggen, um eine Teilveranstaltung erstellen zu koennen.
+{% trans "You have to "%} <a href="/accounts/login">{% trans "log in" %}</a> {% trans "to propose new subevents"%}.
 {% elif not user.username %}
-Sie muessen sich ein Pseudonym geben, um eine Teilveranstaltung erstellen zu koennen.
+{% trans "You have to have a username to propose subevents." %}
 {% endif %}
 {% endif %}
 
 {% else %}
-Leider kann man ueber diesen Weg keine Events mehr fuer den Bildungsfeiertag am {{site.name}} erstellen.
+{% trans "Unfortunately the call for event propositions for the Bildungsfeiertag at {{site.name}} is closed now." %}
 {% endif %}
 
 {% endblock %}

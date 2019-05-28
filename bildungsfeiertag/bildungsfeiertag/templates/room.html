@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}Bildungsfeiertag{% endblock %}
 
@@ -15,7 +16,7 @@
             </div>
         {% endfor %}
         {% else %}
-            <p>Leider gibt es noch keine Angebote zu diesem Raum.</p>
+            <p>{% trans "There are no subevents planned in this room." %}</p>
         {% endif %}
 {% endif %}
 </div>

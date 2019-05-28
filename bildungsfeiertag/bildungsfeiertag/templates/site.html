@@ -1,5 +1,5 @@
-
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}Bildungsfeiertag{% endblock %}
 
@@ -11,7 +11,7 @@
   <h2>{{site.name}}</h2>
 
   {% if site.roomsdistributed %}
-  <h3>Raeume</h3>
+  <h3>{% trans "Rooms" %}</h3>
         {% if rooms_events %}
         {% for room, scheduled_events in rooms_events %}
             <div class="index-cell" id="room">
@@ -28,7 +28,7 @@
             </div>
         {% endfor %}
         {% else %}
-            <p>Leider gibt keine Raeume an diesem Veranstaltungsort.</p>
+            <p>{% trans "There are no sublocations for this Bildungsfeiertag site." %}</p>
         {% endif %}
   {% else %}
     {% if events %}
@@ -38,7 +38,7 @@
       </div>
       {% endfor %}
     {% else %}
-      <p>Leider gibt noch keine Events an diesem Veranstaltungsort.</p>
+      <p>{% trans "There are no subevent propositions for this Bildungsfeiertag site yet." %}</p>
       {% endif %}
 
   {% if user.is_authenticated %}
@@ -46,7 +46,7 @@
   {% if not site.callforeventsclosed %}
   <a href="/site/{{site.name}}/event_create">
   <div class="index-cell" id="event">
-    Erstelle einen neuen Event.
+    {% trans "Propose a new subevent." %}
   </div>
   </a>
   {% endif %}
@@ -54,12 +54,12 @@
   {% if not helper %}
   <a href="/site/{{site.name}}/helper-information">
   <div class="index-cell" id="helper">
-    Als Helfer anmelden.
+    {% trans "Apply as background helper." %}
   </div>
   {% else %}
   <a href="/site/{{site.name}}/helper-information">
   <div class="index-cell" id="helper">
-    Helferinformationen.
+    {% trans "Info for background helpers." %}
   </div>
   </a>
   {% endif %}

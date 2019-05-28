@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}Bildungsfeiertag{% endblock %}
 
@@ -14,26 +15,26 @@
 {% if helper %}
 <form action="" method="post">
     {% csrf_token %}
-    Möchten Sie sich sicher als Helfer beim Bildungsfeiertag am {{site.name}} abmelden?
-    <input type="submit" value="Ja" name="Yes">
+    {% trans "Do you want to sign out as helper for the Bildungsfeiertag at {{site.name}}?" %}
+    <input type="submit" value="{%trans 'Yes' %}" name="Yes">
 </form>
 
 {% elif user.phone_number and user.first_name and user.last_name %}
 <form action="" method="post">
     {% csrf_token %}
-    Möchten Sie sich sicher als Helfer beim Bildungsfeiertag am {{site.name}} anmelden?
-    <input type="submit" value="Ja">
+    {% trans "Do you want to be a background helper at the Bildungsfeiertag at {{site.name}}?" %}
+    <input type="submit" value="{%trans 'Yes' %}" name="Yes">
 </form>
 
 {% else %}
-Sie muessen erst in Ihren <a href="/accounts/profile">Daten</a> Ihren vollen Namen und eine Handynummer angeben.
+{% trans "If you want to help us in the background, please give us your full name and mobile phone number %} <a href="/accounts/profile">{% trans "here" %}</a>.
 
 {% endif %}
 {% endif %}
 
 <a href="/site/{{site.name}}">
 <div class="index-cell" id="site">
-Zurück zum Veranstaltungsort.
+{% trans "Back to the site."%}
 </div>
 </a>
 

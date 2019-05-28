@@ -1,5 +1,5 @@
-
 {% extends "base.html" %}
+{% load i18n %}
 
 {% load crispy_forms_tags %}
 
@@ -9,7 +9,7 @@
 
 {% if user.is_authenticated %}
 
-<h3> Deine Angebote </h3>
+<h3> {% trans "Your proposed subevents" %} </h3>
 {% if sites_events %}
 {% for site, event in sites_events %}
     <div class="index-cell" id="event">
@@ -17,10 +17,10 @@
     </div>
 {% endfor %}
 {% else %}
-    <p>Leider bieten Sie keinen Teilveranstaltung an.</p>
+    <p>{% trans ">You didn't propose a subevent for Bildungsfeiertag yet." %}</p>
 {% endif %}
 
-<h3> Deine Votes </h3>
+<h3> {% trans "Your votes" %} </h3>
 {% if sites_events_voted %}
 {% for site, event in sites_events_voted %}
     <div class="index-cell" id="event">
@@ -28,16 +28,16 @@
     </div>
 {% endfor %}
 {% else %}
-    <p>Sie haben noch fuer keine Veranstaltung gewaehlt.</p>
+    <p>{% trans "You didn't vote for any subevent yet." %}</p>
 {% endif %}
 
 
-<h4> Deine Daten </h4>
+<h4> {% trans "Your personal information"%} </h4>
 
 <form action="" method="post">
     {% csrf_token %}
     {{ form|crispy }}
-    <input type="submit" value="Aendern">
+    <input type="submit" value="{% trans 'Change' %}">
 </form>
 
 {% if messages %}
@@ -48,7 +48,7 @@
 
 
 {% else %}
-Du bist nicht eingeloggt.
+{% trans "You are not logged in." %}
 {% endif %}
 
 {% endblock %}

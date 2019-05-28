@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Thanks{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Thanks" %}{% endblock %}
 {% block main %}
 
-You were registered!
+{% trans "You were registered!" %}
 
 {% endblock %}

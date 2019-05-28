@@ -5,11 +5,11 @@ from djmoney.models.fields import MoneyField
 from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
 from django.core.validators import MinValueValidator, MaxValueValidator
 from phonenumber_field.modelfields import PhoneNumberField
-from django.utils.translation import gettext, gettext_lazy as _
+from django.utils.translation import gettext as _
 
-EVENT_DURATIONS = (('30', "kurz (15 + 10 min)"),
-                   ('60', "lang (35 + 15 min)"),
-                   ('90', "sehr lang (65 + 20 min)"))
+EVENT_DURATIONS = (('30', _("short") + " (15 + 10 min)"),
+                   ('60', _("long") + " (35 + 15 min)"),
+                   ('90', _("very long") + " (65 + 20 min)"))
 
 EVENT_DEFAULT_DURATION = EVENT_DURATIONS[0]
 
@@ -54,10 +54,10 @@ class Event(models.Model):
     WORKSHOP = 'Workshop'
     EXCURSION = 'Excursion'
     DISCUSSION = 'Discussion'
-    EVENT_TYPES = ((TALK, 'Vortrag'),
-                   (WORKSHOP, 'Workshop'),
-                   (EXCURSION, 'Exkursion'),
-                   (DISCUSSION, 'Diskussion'))
+    EVENT_TYPES = ((TALK,  _("Talk")),
+                   (WORKSHOP, _("Workshop")),
+                   (EXCURSION, _("Exkursion")),
+                   (DISCUSSION, _("Diskussion")))
     submit_date = models.DateTimeField()
     title = models.TextField()
     # date = models.DateField()

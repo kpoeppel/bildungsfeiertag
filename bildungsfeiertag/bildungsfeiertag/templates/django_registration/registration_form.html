@@ -1,14 +1,15 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}Bildungsfeiertag{% endblock %}
 
 {% block main %}
 
 <form action="" method="post">
-    Register
+    {% trans "Register" %}
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <input type="submit" value="{% trans 'Submit' %}">
 </form>
 
 {% endblock %}

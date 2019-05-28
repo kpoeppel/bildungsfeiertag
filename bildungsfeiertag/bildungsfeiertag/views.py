@@ -10,6 +10,7 @@ from .forms import ProfileForm, EventForm, UserRegistrationForm
 import datetime
 from django.contrib import messages
 from django_registration.backends.activation.views import RegistrationView
+from django.utils.translation import gettext as _
 
 def index_view(request):
     sites = Site.objects.all()
@@ -61,13 +62,13 @@ def scheduled_event_view(request, site_name, event_title):
                 interest[0].delete()
                 messages.add_message(request,
                                      messages.SUCCESS,
-                                     'You are not interested in '+scheduled_event.title+" anymore.")
+                                     _('You are not interested in ') + scheduled_event.title + ".")
             else:
                 interest = Interest(user=user, event=event)
                 interest.save()
                 messages.add_message(request,
                                      messages.SUCCESS,
-                                     'You are interested in '+event.title+".")
+                                     _('You are interested in ') + event.title + ".")
         if user.is_authenticated:
             interests = len(Interest.objects.filter(scheduled_event=scheduled_event))
             interest = Interest.objects.filter(user=user, scheduled_event=scheduled_event)
@@ -111,7 +112,7 @@ def event_view(request, site_name, event_title):
             vote = None
         return render(request, "event.html", {"event": event, "site": site, "user": user, "votes": votes, "vote": vote})
     else:
-        raise Http404("Event does not exist.")
+        raise Http404(_("Event does not exist."))
 
 
 def room_view(request, site_name, room_name):
@@ -127,7 +128,7 @@ def room_view(request, site_name, room_name):
                                              "site": site,
                                              "user": user})
     else:
-        raise Http404("Room does not exist.")
+        raise Http404(_("Room does not exist."))
 
 def helper_info_view(request, site_name):
     site = get_object_or_404(Site, name=site_name)
@@ -139,13 +140,13 @@ def helper_info_view(request, site_name):
             helper.save()
             messages.add_message(request,
                                  messages.SUCCESS,
-                                 'Thank you for registering as helper for '+site.name+".")
+                                 _('Thank you for registering as helper for ')+site.name+".")
             return HttpResponseRedirect('')
         else:
             helper[0].delete()
             messages.add_message(request,
                                  messages.SUCCESS,
-                                 'We are sorry that you are not helper for '+site.name+" anymore.")
+                                 _('We are sorry that you don\'t want to be helper for ')+site.name)
             return HttpResponseRedirect('')
     return render(request, "helper-info.html", {"site": site,
                                                  "user": user,
@@ -196,19 +197,19 @@ def event_create_view(request, site_name):
                 else:
                     messages.add_message(request,
                                          messages.ERROR,
-                                         'Title already exists.')
+                                         _('Title already exists.'))
                     return HttpResponseRedirect('')
                 # process the data in form.cleaned_data as required
                 # ...
                 # redirect to a new URL:
                 messages.add_message(request,
                                      messages.SUCCESS,
-                                     'Changes successfully saved.')
+                                     _('Changes successfully saved.'))
                 return HttpResponseRedirect('event/'+event.title)
             else:
                 messages.add_message(request,
                                      messages.ERROR,
-                                     'Form was badly filled.')
+                                     _('Form was badly filled.'))
                 return HttpResponseRedirect('')
         else:
             form = EventForm(initial={'title': "",
@@ -237,11 +238,11 @@ def event_delete_view(request, site_name, event_title):
             event.delete()
             messages.add_message(request,
                                  messages.SUCCESS,
-                                 'Your event was deleted.')
+                                 _('Your event was deleted.'))
         else:
             messages.add_message(request,
                                  messages.ERROR,
-                                 'Your must not delete others events.')
+                                 _('Your must not delete others events.'))
     return render(request, "event-delete.html", {"site": site, "user": user})
 
 
@@ -273,11 +274,11 @@ def event_change_view(request, site_name, event_title):
                     event = newevent
                     messages.add_message(request,
                                          messages.SUCCESS,
-                                         'Changes successfully saved.')
+                                         _('Changes successfully saved.'))
                 else:
                     messages.add_message(request,
                                          messages.ERROR,
-                                         'Title already exists.')
+                                         _('Title already exists.'))
                     return HttpResponseRedirect('')
                 # process the data in form.cleaned_data as required
                 # ...
@@ -285,7 +286,7 @@ def event_change_view(request, site_name, event_title):
                 return HttpResponseRedirect("../event/"+event.title)
             messages.add_message(request,
                                  messages.ERROR,
-                                 'Form was badly filled.')
+                                 _('Form was badly filled.'))
             return HttpResponseRedirect('')
         # if a GET (or any other method) we'll create a blank form
         else:
@@ -348,11 +349,11 @@ def profile_view(request):
                 else:
                     messages.add_message(request,
                                          messages.ERROR,
-                                         'Email exists.')
+                                         _('Email already used.'))
             else:
                 messages.add_message(request,
                                      messages.ERROR,
-                                     'Bad input.')
+                                     _('Bad input.'))
             return HttpResponseRedirect('')
 
         # if a GET (or any other method) we'll create a blank form

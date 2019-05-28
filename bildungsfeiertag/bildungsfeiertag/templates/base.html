@@ -1,4 +1,5 @@
 <!doctype html>
+{% load i18n %} 
 {% load sass_tags %}
 <html>
 
@@ -8,7 +9,7 @@
     <meta name="description" content="Bildungsfeiertag">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}{% endblock %} - Bildungsfeiertag</title>
+    <title>{% block title %}{% endblock %}</title>
 
 
     <script type="text/javascript" src="/static/js/main.js" async></script>
@@ -38,17 +39,17 @@
               </li>
                 {% if user.is_authenticated %}
               <li class=''>
-                <a target='_top' href="/accounts/profile">Meine Vortraege</a>
+                <a target='_top' href="/accounts/profile">{% trans "My Events" %}</a>
               </li>
               <li class=''>
-                <a target='_top' href="/accounts/logout">Logout</a>
+                <a target='_top' href="/accounts/logout">{% trans "Logout"%}</a>
               </li>
                 {% else %}
               <li class=''>
-                <a target='_top' href="/accounts/login">Login</a>
+                <a target='_top' href="/accounts/login">{% trans "Login"%}</a>
               </li>
               <li class=''>
-                <a target='_top' href="/accounts/register">Register</a>
+                <a target='_top' href="/accounts/register">{% trans "Register"%}</a>
               </li>
                 {% endif %}
             </ul>

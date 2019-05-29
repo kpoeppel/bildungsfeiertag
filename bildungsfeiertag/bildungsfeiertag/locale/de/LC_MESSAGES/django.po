@@ -1,0 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-29 13:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: bildungsfeiertag/models.py:10
+msgid "short"
+msgstr "kurz"
+
+#: bildungsfeiertag/models.py:11
+msgid "long"
+msgstr "lang"
+
+#: bildungsfeiertag/models.py:12
+msgid "very long"
+msgstr "sehr lang"
+
+#: bildungsfeiertag/models.py:21
+msgid "email address"
+msgstr "Email-Adresse"
+
+#: bildungsfeiertag/models.py:57
+msgid "Talk"
+msgstr "Vortrag"
+
+#: bildungsfeiertag/models.py:58
+msgid "Workshop"
+msgstr "Workshop"
+
+#: bildungsfeiertag/models.py:59
+msgid "Excursion"
+msgstr "Exkursion"
+
+#: bildungsfeiertag/models.py:60
+msgid "Discussion"
+msgstr "Diskussion"
+
+#: bildungsfeiertag/templates/base.html:35
+msgid "Sites"
+msgstr "Veranstaltungsorte"
+
+#: bildungsfeiertag/templates/base.html:38
+msgid "Idea"
+msgstr "Idee"
+
+#: bildungsfeiertag/templates/base.html:42
+msgid "My Events"
+msgstr "Meine Vorträge"
+
+#: bildungsfeiertag/templates/base.html:45
+msgid "Logout"
+msgstr "Abmelden"
+
+#: bildungsfeiertag/templates/base.html:49
+msgid "Login"
+msgstr "Anmelden"
+
+#: bildungsfeiertag/templates/base.html:52
+#: bildungsfeiertag/templates/django_registration/registration_form.html:9
+msgid "Register"
+msgstr "Registrieren"
+
+#: bildungsfeiertag/templates/django_registration/activation_complete.html:3
+msgid "Thank you!"
+msgstr "Dankeschön!"
+
+#: bildungsfeiertag/templates/django_registration/activation_complete.html:6
+msgid "Your account was activated."
+msgstr "Ihr Account wurde akitviert."
+
+#: bildungsfeiertag/templates/django_registration/activation_failed.html:4
+msgid "We are sorry."
+msgstr "Tut uns leid."
+
+#: bildungsfeiertag/templates/django_registration/activation_failed.html:7
+msgid "Activation failed."
+msgstr "Das Aktivieren hat nicht geklappt."
+
+#: bildungsfeiertag/templates/django_registration/password_reset_complete.html:3
+#: bildungsfeiertag/templates/django_registration/password_reset_complete.html:6
+msgid "Password reset complete"
+msgstr "Das Passwort-Zurücksetzen hat geklappt."
+
+#: bildungsfeiertag/templates/django_registration/password_reset_complete.html:7
+msgid "Your new password has been set. You can log in now on the"
+msgstr ""
+"Ihr neues Passwort wurde gesetzt. Sie können sich nun einloggen auf der"
+
+#: bildungsfeiertag/templates/django_registration/password_reset_complete.html:7
+msgid "log in page"
+msgstr "Anmeldeseite"
+
+#: bildungsfeiertag/templates/django_registration/password_reset_confirm.html:5
+msgid "Enter new password"
+msgstr "Neues Passwort eingeben"
+
+#: bildungsfeiertag/templates/django_registration/password_reset_confirm.html:8
+msgid "Set a new password."
+msgstr "Setzen Sie ein neues Passwort"
+
+#: bildungsfeiertag/templates/django_registration/password_reset_done.html:5
+msgid "Email Sent"
+msgstr "Die Email wurde verschickt."
+
+#: bildungsfeiertag/templates/django_registration/password_reset_done.html:9
+msgid ""
+"We've emailed you instructions for setting your password. You should receive "
+"the email shortly!"
+msgstr ""
+"Wir haben Ihnen eine Email mit Informationen zum Rücksetzen Ihres Passworts "
+"geschickt"
+
+#: bildungsfeiertag/templates/django_registration/password_reset_form.html:4
+msgid "Forgot Your Password?"
+msgstr "Passwort vergessen?"
+
+#: bildungsfeiertag/templates/django_registration/password_reset_form.html:7
+msgid "Forgot your password?"
+msgstr "Passwort vergessen?"
+
+#: bildungsfeiertag/templates/django_registration/password_reset_form.html:8
+msgid ""
+"Enter your email address below, and we'll email instructions for setting a "
+"new one."
+msgstr ""
+"Bitte geben Sie Ihre Email-Adresse ein und wir schicken Ihnen eine "
+"Anleitung, um ein neues Passwort zu setzen."
+
+#: bildungsfeiertag/templates/django_registration/password_reset_form.html:13
+msgid "Send me instructions."
+msgstr "Anleitung verschicken."
+
+#: bildungsfeiertag/templates/django_registration/registration_complete.html:4
+msgid "Thanks"
+msgstr "Danke"
+
+#: bildungsfeiertag/templates/django_registration/registration_complete.html:7
+msgid "You were registered!"
+msgstr "Sie wurden registriert."
+
+#: bildungsfeiertag/templates/django_registration/registration_form.html:12
+msgid "Submit"
+msgstr "Abschicken"
+
+#: bildungsfeiertag/templates/event-create.html:16
+msgid "Create / Change a subevent"
+msgstr "Erstellen / Ändern einer Teilveranstaltung"
+
+#: bildungsfeiertag/templates/event-create.html:31
+msgid "Delete this event."
+msgstr "Diese Teilveranstaltung löschen."
+
+#: bildungsfeiertag/templates/event-create.html:36
+msgid "You have to "
+msgstr "Sie müssen sich "
+
+#: bildungsfeiertag/templates/event-create.html:36
+msgid "log in"
+msgstr "einloggen"
+
+#: bildungsfeiertag/templates/event-create.html:36
+msgid "to propose new subevents"
+msgstr ", um neue Teilveranstaltungen anbieten zu können"
+
+#: bildungsfeiertag/templates/event-create.html:38
+msgid "You have to have a username to propose subevents."
+msgstr ""
+"Sie brauchen einen Benutzernamen, um Teilveranstaltungen anbieten zu können."
+
+#: bildungsfeiertag/templates/event-create.html:43
+msgid ""
+"Unfortunately the call for event propositions for the Bildungsfeiertag at "
+"{{site.name}} is closed now."
+msgstr ""
+"Leider können Sie nun keine zusätzlichen Teilveranstaltungen für den "
+"Bildungsfeiertag am {{site.name}} mehr anbieten."
+
+#: bildungsfeiertag/templates/event.html:15
+msgid "votes"
+msgstr "Stimmen"
+
+#: bildungsfeiertag/templates/event.html:22
+msgid "Unvote."
+msgstr "Abwählen."
+
+#: bildungsfeiertag/templates/event.html:27
+msgid "Vote."
+msgstr "Wählen."
+
+#: bildungsfeiertag/templates/event.html:34
+msgid "Change this event."
+msgstr "Diesen Event ändern."
+
+#: bildungsfeiertag/templates/helper-info.html:18
+msgid ""
+"Do you want to sign out as helper for the Bildungsfeiertag at {{site.name}}?"
+msgstr ""
+"Wollen Sie sich nich mehr als Helfer am Bildungsfeiertag am {{site.name}} "
+"engagieren?"
+
+#: bildungsfeiertag/templates/helper-info.html:19
+#: bildungsfeiertag/templates/helper-info.html:26
+msgid "Yes"
+msgstr "Ja"
+
+#: bildungsfeiertag/templates/helper-info.html:25
+msgid ""
+"Do you want to be a background helper at the Bildungsfeiertag at {{site."
+"name}}?"
+msgstr ""
+"Wollen Sie bei der Organisation im Hintergrund des Bildungsfeiertags am "
+"{{site.name}} mithelfen?"
+
+#: bildungsfeiertag/templates/helper-info.html:30
+msgid "here"
+msgstr "hier"
+
+#: bildungsfeiertag/templates/helper-info.html:37
+msgid "Back to the site."
+msgstr "Zurück zum Veranstaltungsort."
+
+#: bildungsfeiertag/templates/index.html:14
+msgid "Event Sites"
+msgstr "Veranstaltungsorte"
+
+#: bildungsfeiertag/templates/profile.html:12
+msgid "Your proposed subevents"
+msgstr "Ihre Teilveranstaltungsangebote"
+
+#: bildungsfeiertag/templates/profile.html:20
+msgid "You didn't propose a subevent for Bildungsfeiertag yet."
+msgstr ""
+
+#: bildungsfeiertag/templates/profile.html:23
+msgid "Your votes"
+msgstr "Ihre gewählten Teilveranstaltungen"
+
+#: bildungsfeiertag/templates/profile.html:31
+msgid "You didn't vote for any subevent yet."
+msgstr "Sie haben für noch kein Teilveranstaltungsangebot abgestimmt."
+
+#: bildungsfeiertag/templates/profile.html:35
+msgid "Your personal information"
+msgstr "Ihre persönlichen Daten"
+
+#: bildungsfeiertag/templates/profile.html:40
+msgid "Change"
+msgstr "Ändern"
+
+#: bildungsfeiertag/templates/profile.html:51
+msgid "You are not logged in."
+msgstr "Sie sind nicht angemeldet."
+
+#: bildungsfeiertag/templates/registration/logged_out.html:8
+msgid "Thank you for your interest and your support!"
+msgstr "Danke für Ihr Interesse und Ihre Unterstützung!"
+
+#: bildungsfeiertag/templates/registration/login.html:16
+msgid "Forgot password?"
+msgstr "Passwort vergessen?"
+
+#: bildungsfeiertag/templates/room.html:19
+msgid "There are no subevents planned in this room."
+msgstr "In diesem Raum sind noch keine Teilveranstaltungen geplant."
+
+#: bildungsfeiertag/templates/site.html:14
+msgid "Rooms"
+msgstr "Räume"
+
+#: bildungsfeiertag/templates/site.html:31
+msgid "There are no sublocations for this Bildungsfeiertag site."
+msgstr ""
+"Es gibt für diesen Veranstaltungsort des Bildungsfeiertags noch keine "
+"zugewiesenen Räumlichkeiten."
+
+#: bildungsfeiertag/templates/site.html:41
+msgid "There are no subevent propositions for this Bildungsfeiertag site yet."
+msgstr ""
+"Für diesen Veranstaltungsort des Bildungsfeiertags gibt es noch keine "
+"Angebote für Teilveranstaltungen."
+
+#: bildungsfeiertag/templates/site.html:49
+msgid "Propose a new subevent."
+msgstr "Bieten Sie eine neue Teilveranstaltung an."
+
+#: bildungsfeiertag/templates/site.html:57
+msgid "Apply as background helper."
+msgstr "Melden Sie sich hier als Helfer im Hintergrund an."
+
+#: bildungsfeiertag/templates/site.html:62
+msgid "Info for background helpers."
+msgstr "Informationen für Helfer im Hintergrund."
+
+#: bildungsfeiertag/views.py:65
+msgid "You are not interested in "
+msgstr "Sie interessieren sich nicht mehr für "
+
+#: bildungsfeiertag/views.py:71
+msgid "You are interested in "
+msgstr "Sie interessieren sich für "
+
+#: bildungsfeiertag/views.py:115
+msgid "Event does not exist."
+msgstr "Diese Teilveranstaltung existiert nicht."
+
+#: bildungsfeiertag/views.py:131
+msgid "Room does not exist."
+msgstr "Dieser Raum existiert nicht."
+
+#: bildungsfeiertag/views.py:143
+msgid "Thank you for registering as helper for "
+msgstr "Danke für die Anmeldung als Helfer für den Bildungsfeiertag am "
+
+#: bildungsfeiertag/views.py:149
+msgid "We are sorry that you don't want to be helper for "
+msgstr "Schade, dass Sie nicht mehr helfen  wollen, beim Bildungsfeiertag am "
+
+#: bildungsfeiertag/views.py:200 bildungsfeiertag/views.py:281
+msgid "Title already exists."
+msgstr "Dieser Titel existiert bereits."
+
+#: bildungsfeiertag/views.py:207 bildungsfeiertag/views.py:277
+msgid "Changes successfully saved."
+msgstr "Änderungen erfolgreich angenommen."
+
+#: bildungsfeiertag/views.py:212 bildungsfeiertag/views.py:289
+msgid "Form was badly filled."
+msgstr "Das Formular wurde nicht korrekt ausgefüllt."
+
+#: bildungsfeiertag/views.py:241
+msgid "Your event was deleted."
+msgstr "Ihre Teilveranstaltung wurde gelöscht."
+
+#: bildungsfeiertag/views.py:245
+msgid "Your must not delete others events."
+msgstr "Sie dürfen nicht die Teilveranstaltungen anderer löschen."
+
+#: bildungsfeiertag/views.py:352
+msgid "Email already used."
+msgstr "Diese Email-Adresse ist bereits registriert."
+
+#: bildungsfeiertag/views.py:356
+msgid "Bad input."
+msgstr "Falsche Eingabe."
+
+#~ msgid "About us"
+#~ msgstr "Über uns"

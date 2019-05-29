@@ -1,5 +1,5 @@
 <!doctype html>
-{% load i18n %} 
+{% load i18n %}
 {% load sass_tags %}
 <html>
 
@@ -32,10 +32,10 @@
       <nav>
             <ul id='Navigation' class='row card-panel teal lighten-2'>
               <li class=''>
-                <a target='_top' href="/">Veranstaltungsorte</a>
+                <a target='_top' href="/">{% trans "Sites"%}</a>
               </li>
               <li class=''>
-                <a target='_top' href="/about">Ueber uns</a>
+                <a target='_top' href="/about">{% trans "Idea"%}</a>
               </li>
                 {% if user.is_authenticated %}
               <li class=''>

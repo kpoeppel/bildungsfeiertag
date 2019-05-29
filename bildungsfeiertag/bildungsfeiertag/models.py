@@ -56,8 +56,8 @@ class Event(models.Model):
     DISCUSSION = 'Discussion'
     EVENT_TYPES = ((TALK,  _("Talk")),
                    (WORKSHOP, _("Workshop")),
-                   (EXCURSION, _("Exkursion")),
-                   (DISCUSSION, _("Diskussion")))
+                   (EXCURSION, _("Excursion")),
+                   (DISCUSSION, _("Discussion")))
     submit_date = models.DateTimeField()
     title = models.TextField()
     # date = models.DateField()

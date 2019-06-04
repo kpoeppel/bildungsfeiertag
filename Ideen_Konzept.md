@@ -1,0 +1,33 @@
+Anmerkungen:
+- Ausschluss von verfassungswidrigen Vorträgen, alle anderen sollten erlaubt sein
+- politische Reden sollten auf Podiumsdiskussionen (mit allen Parteien) beschränkt werden
+- Ausgleich von politischen und privaten Vorträgen (gesellschaftliches und privates Interesse)
+- 2019: 3. Oktober, Aussicht auf separate(r) Feiertag(e)
+- Sendung mit der Maus: Türöffnertag
+- Motto?, -> Tracks (Kinderprogramm, Gesellschaft & Politik, Umwelt, ...)
+- Verantwortlichkeiten des Kernteams
+- Zugpferde, Vortragende einladen? (lokaler Bezug), nur wenige
+- 2h-Workshops
+- Manifest (erste Umsetzung vs. Vision)
+- Remote-Voträge von besonderen Vortragenden (langfristig)
+- Pausen nach 90-120 Minuten
+- nur Nachmittag, beim ersten Mal
+- langfristig eigener Feiertag(e)
+- gemütliches Beisammensein am Ende
+- bei wenig Angebot lieber kurz und komprimiert statt lang mit vielen Pausen
+- Slogan?
+- Text weniger idealistisch / politisch
+- Wann? 3. Oktober
+- Wo? Hallertau-Gymnasium
+- Warum?
+- Wie? Plattform, Programm,
+- offen keine Anmeldepflicht
+- Tag der offenen Tür Richtung
+- unverbindliche Anmeldungen
+- Kooperation mit VHS
+- Beispielkurse im Text
+- Praxisnah UND Generell
+- Wer ist Veranstalter?
+- Wer legt Geld aus?
+- kostenloses Marketing
+- im ersten Jahr beschränkt auf einen Standort (Hallertau-Gymnasium)

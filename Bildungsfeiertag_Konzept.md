@@ -39,38 +39,9 @@ Dabei ist wichtig, dass dadurch Barrieren abgebaut werden sollen miteinander ins
 3. __Neue Ansichten zugänglich machen:__
 Allerdings ist es hierdurch leicht möglich, eine eingeschränkte Sicht auf die Faktenlage zu erhalten. Diese Filterblase kann zu einer von außen betrachtet verzerrten Weltansicht führen, da ein Großteil der Tatsachen ignoriert wird.
 Ein ähnlicher Ansatz soll auch in den Vorträgen verfolgt werden. Jede:r kann einen Vortrag über ein selbst ausgesuchtes Thema halten. Eine Selektion aufgrund von organisatorischen Gegebenheiten findet demokratisch durch die Teilnehmer statt.
-Das Kernanliegen des Bildungsfeiertags ist es, Gesellschaft auf ein persönliche
-
-Durch die Technische Weiterentwicklung ist es
+Das Kernanliegen des Bildungsfeiertags ist es, durch den regionalen Bezug den gemeinsamen Austausch zu erleichtern.
 
 
-
-
-
-
-
-
-
-In einem immer komplexer werdenden gesellschaftlichen Umfeld und einer ständigen technischen Weiterentwicklung ist es allein mit dem Schulwissen oft nicht mehr möglich,
-aufgeklärt und selbstständig den Herausforderungen des alltäglichen Lebens
-entgegenzutreten. Auch das demokratische Prinzip beschränkt sich nicht allein
-auf die Möglichkeit, seine eigenen Interessen gegenüber denen Anderer durchzusetzen.
-Die Demokratie fordert von jeder und jedem auch die Beteiligung, um gemeinsam als
-Volkssouverän, als Träger des tatsächlichen Machtanspruchs, Zukunftsentscheidungen
-zu treffen, die allen nutzen.
-
-Der Bildungsfeiertag soll in diesem Sinne die Möglichkeit bieten, sich im Sinne
-der Gemeinschaft gegenseitig weiterzubilden und über gesellschaftliche
-Grundfragen zu diskutieren.
-Ein Tag, an dem alle Zeit haben, um sich in gemütlicher Atmosphäre zu treffen
-und sich gegenseitig zuzuhören.
-
-Es gibt auch einen Ort, der sich dafür anbietet, wie kein zweiter, die Schule. Am Bildungsfeiertag soll aber nicht ein Lehrer seinen Lehrplan abarbeiten, jeder soll hier die Möglichkeit bekommen, sein Wissen, seine Fähigkeiten und auch seine Meinung zu präsentieren.
-Es soll ein Tag sein, für Kinder, für Eltern, für Singles mit und ohne Niveau,
-für Rentner, für Studenten, für Auszubildende, für Meister Ihres Fachs und solche,
-die es noch werden wollen oder Ihr Fach noch suchen.
-Selbstverständlich soll die Teilnahme an diesem Tag kostenlos sein, Bildung ist
-ein Menschenrecht.
 
 ### Organisation des Programms ###
 Um die Interessen der Zuhörer und die Angebote der Fachkundigen zusammen zu
@@ -101,38 +72,3 @@ selbstbestimmt zu entscheiden und zu handeln.
 Wir freuen uns über Ihre Unterstützung!
 
 Das Bildungsfeiertagteam
-
-
-Anmerkungen:
-- Ausschluss von verfassungswidrigen Vorträgen, alle anderen sollten erlaubt sein
-- politische Reden sollten auf Podiumsdiskussionen (mit allen Parteien) beschränkt werden
-- Ausgleich von politischen und privaten Vorträgen (gesellschaftliches und privates Interesse)
-- 2019: 3. Oktober, Aussicht auf separate(r) Feiertag(e)
-- Sendung mit der Maus: Türöffnertag
-- Motto?, -> Tracks (Kinderprogramm, Gesellschaft & Politik, Umwelt, ...)
-- Verantwortlichkeiten des Kernteams
-- Zugpferde, Vortragende einladen? (lokaler Bezug), nur wenige
-- 2h-Workshops
-- Manifest (erste Umsetzung vs. Vision)
-- Remote-Voträge von besonderen Vortragenden (langfristig)
-- Pausen nach 90-120 Minuten
-- nur Nachmittag, beim ersten Mal
-- langfristig eigener Feiertag(e)
-- gemütliches Beisammensein am Ende
-- bei wenig Angebot lieber kurz und komprimiert statt lang mit vielen Pausen
-- Slogan?
-- Text weniger idealistisch / politisch
-- Wann? 3. Oktober
-- Wo? Hallertau-Gymnasium
-- Warum?
-- Wie? Plattform, Programm,
-- offen keine Anmeldepflicht
-- Tag der offenen Tür Richtung
-- unverbindliche Anmeldungen
-- Kooperation mit VHS
-- Beispielkurse im Text
-- Praxisnah UND Generell
-- Wer ist Veranstalter?
-- Wer legt Geld aus?
-- kostenloses Marketing
-- im ersten Jahr beschränkt auf einen Standort (Hallertau-Gymnasium)

@@ -1,7 +1,6 @@
-Der Bildungsfeiertag
-====================
+# Der Bildungsfeiertag
 
-## Konzeption ##
+## Konzeption
 In einem immer komplexer werdenden gesellschafltichen Umfeld und einer ständigen
 technischen Weiterentwicklung ist es allein mit dem Schulwissen nicht mehr möglich,
 aufgeklärt und selbstständig den Herausforderungen des alltäglichen Lebens 
@@ -25,7 +24,7 @@ Es soll ein Tag sein, für Kinder, für Eltern, für Singles mit und ohne Niveau
 für Rentner, für Studenten, für Auszubildende, für Meister Ihres Fachs und solche,
 die es noch werden wollen, oder Ihr Fach noch suchen.
 
-### Organisation des Programms ###
+## Organisation des Programms
 Um die Interessen der Zuhörer und die Angebote der Fachkundigen zusammen zu
 bringen, wird es eine Website (bildungsfeiertag.de) geben, auf der pseudonym
 Vorträge angeboten werden, die dann von der Gemeinschaft bewertet werden können.

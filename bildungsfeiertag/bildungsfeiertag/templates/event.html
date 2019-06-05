@@ -10,7 +10,7 @@
   {% if event %}
   <h3>{{event.title}}</h3>
   <div class="index-cell">
-    {{event.description}}
+    {{event_text|safe}}
   </div>
   {{votes}} {% trans "votes" %}.
 

@@ -25,7 +25,6 @@ def about_view(request):
         desc_text = f.read()
         desc_text = re.sub(r"(?<!\n)\n(?![\n-])", " ", desc_text)
         desc_text = re.sub(r"  ", " ", desc_text)
-        print(desc_text)
         desc = docupy.markdown_to_html(desc_text.replace("\r", ""), MediaFile.media_lookup())
     return render(request, "about.html", {"description": desc})
 
@@ -100,6 +99,7 @@ def event_view(request, site_name, event_title):
     user = request.user
     if event:
         event = event[0]
+        event_text = docupy.markdown_to_html(event.description.replace("\r", ""), MediaFile.media_lookup())
         if request.method == 'POST':
             vote = Vote.objects.filter(user=user, event=event)
             if vote:
@@ -119,7 +119,7 @@ def event_view(request, site_name, event_title):
         else:
             votes = len(Vote.objects.filter(event=event))
             vote = None
-        return render(request, "event.html", {"event": event, "site": site, "user": user, "votes": votes, "vote": vote})
+        return render(request, "event.html", {"event": event, "event_text": event_text, "site": site, "user": user, "votes": votes, "vote": vote})
     else:
         raise Http404(_("Event does not exist."))
 

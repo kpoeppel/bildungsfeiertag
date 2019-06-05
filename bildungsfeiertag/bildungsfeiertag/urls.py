@@ -24,8 +24,8 @@ from . import views
 
 urlpatterns = [
     path(r"admin/", admin.site.urls),
-    path(r"", views.index_view),
-    path(r"about", views.about_view),
+    path(r"site/", views.index_view),
+    path(r"", views.about_view),
     path(r"site/<str:site_name>", views.site_view),
     path(r"site/<str:site_name>/event_change/<str:event_title>", views.event_change_view),
     path(r"site/<str:site_name>/event_create", views.event_create_view),

@@ -35,6 +35,18 @@ header {
     padding-right: 5%;
     cursor: pointer; }
 
+  .header{width:100%;
+       }
+
+       .header img{ width: 20%;
+
+       }
+
+       .header h1{
+
+       display:inline; 
+   }
+
 nav {
   display: none;
   font-family: "FreeSans";

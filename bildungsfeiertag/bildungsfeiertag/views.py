@@ -11,6 +11,9 @@ import datetime
 from django.contrib import messages
 from django_registration.backends.activation.views import RegistrationView
 from django.utils.translation import gettext as _
+import docupy
+import re
+
 
 def index_view(request):
     sites = Site.objects.all()
@@ -18,7 +21,13 @@ def index_view(request):
 
 
 def about_view(request):
-    return render(request, "about.html", {"description": "This is a preliminary description text."})
+    with open("../Bildungsfeiertag_Konzept.md") as f:
+        desc_text = f.read()
+        desc_text = re.sub(r"(?<!\n)\n(?![\n-])", " ", desc_text)
+        desc_text = re.sub(r"  ", " ", desc_text)
+        print(desc_text)
+        desc = docupy.markdown_to_html(desc_text.replace("\r", ""), MediaFile.media_lookup())
+    return render(request, "about.html", {"description": desc})
 
 
 def overview_view(request):

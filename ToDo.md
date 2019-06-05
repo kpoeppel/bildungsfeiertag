@@ -33,4 +33,4 @@ Website online fuer echte Anmeldungen: 1. Juli
 Jeder, der mithelfen will darf sich eintragen (in Klammern, siehe oben), oder Punkte hinzufügen (mit Vermerk).
 Danke für Eure Mithilfe!
 
-Wenn Ihr Euch auf github angemeldet habt, schreibt mir den Namen per Email unter korbinian.poeppel@gmx.de
+Wenn Ihr Euch auf github angemeldet habt, schreibt mir den Namen per Email.

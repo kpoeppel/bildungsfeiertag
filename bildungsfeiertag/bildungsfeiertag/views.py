@@ -117,7 +117,7 @@ def event_view(request, site_name, event_title):
             votes = len(Vote.objects.filter(event=event))
             vote = Vote.objects.filter(user=user, event=event)
         else:
-            votes = []
+            votes = len(Vote.objects.filter(event=event))
             vote = None
         return render(request, "event.html", {"event": event, "site": site, "user": user, "votes": votes, "vote": vote})
     else:

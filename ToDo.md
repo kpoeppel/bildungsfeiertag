@@ -25,10 +25,10 @@
 - Online, Facebook (?)
 
 ## Zeitplan - Deadlines
-Website praestentationsfertig: 1. Juni -> 08. Juni
-Website online fuer Test-Anmeldungen: 22. Juni
-Gespraeche erledigt mit den essentiellen Organisationspartnern: 1. Juli
-Website online fuer echte Anmeldungen: 1. Juli
+- Website praestentationsfertig: 1. Juni -> 08. Juni
+- Website online fuer Test-Anmeldungen: 22. Juni
+- Gespraeche erledigt mit den essentiellen Organisationspartnern: 1. Juli
+- Website online fuer echte Anmeldungen: 1. Juli
 
 Jeder, der mithelfen will darf sich eintragen (in Klammern, siehe oben), oder Punkte hinzufügen (mit Vermerk).
 Danke für Eure Mithilfe!
